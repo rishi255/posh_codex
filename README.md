@@ -48,10 +48,10 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 
 ## TODO checklist
 
-- [ ] Test basic PS plugin working with hardcoded completions  
-- [ ] Test plugin by scraping the generated output from [this OpenAI playground.](https://beta.openai.com/playground/p/default-text-to-command), until a Codex API key is received.  
-- [ ] Add installation instructions to README.md  
-- [ ] Test plugin robustness in PowerShell using Codex API key  
+- [x] Test basic PS plugin working with hardcoded completions
+- [ ] Test plugin by scraping the generated output from [this OpenAI playground.](https://beta.openai.com/playground/p/default-text-to-command), until a Codex API key is received.
+- [ ] Add installation instructions to README.md
+- [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Publish plugin for installation through PSGallery or Scoop
 
 <!-- 1. Install the OpenAI package.
