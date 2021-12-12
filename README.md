@@ -1,7 +1,7 @@
 <h1 align="center">⌨️ 🦾 PowerShell Codex</h1>
 
 <p align="center">
-    AI in the command line.
+    AI in the command line. Powered by the AI behind GitHub Copilot.
 </p>
 
 <p align="center">
@@ -50,9 +50,10 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 
 - [x] Test basic PS plugin working with hardcoded completions
 - [ ] Test plugin by scraping the generated output from [this OpenAI playground.](https://beta.openai.com/playground/p/default-text-to-command), until a Codex API key is received.
-- [ ] Add installation instructions to README.md
 - [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Publish plugin for installation through PSGallery or Scoop
+- [ ] Add installation instructions to README.md
+- [ ] Add GIF of working demo in terminal
 
 <!-- 1. Install the OpenAI package.
 
