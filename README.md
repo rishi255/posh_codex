@@ -49,9 +49,11 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 ## TODO checklist
 
 - [x] Test basic PS plugin working with hardcoded completions
-- [ ] Test plugin by scraping the generated output from [this OpenAI playground.](https://beta.openai.com/playground/p/default-text-to-command), until a Codex API key is received.
+- [ ] Test plugin by scraping the generated output from [my text-to-PowerShell OpenAI playground.](https://beta.openai.com/playground/p/4FqkeG4WQuIPfOUS6cvXQfQR?model=davinci), until a Codex API key is received.
+- [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
 - [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Publish plugin for installation through PSGallery or Scoop
+- [ ] Make an edit-publish workflow to easily publish new versions and make it easier for others to contribute
 - [ ] Add installation instructions to README.md
 - [ ] Add GIF of working demo in terminal
 
