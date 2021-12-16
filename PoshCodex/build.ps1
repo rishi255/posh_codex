@@ -28,15 +28,22 @@ task Init {
         Write-Warning "Module 'PowerShellGet' is missing or out of date. Installing module now."
         Install-Module -Name PowerShellGet -Scope CurrentUser -Force
     }
+
+	Write-Verbose -Message "Creating Public, Private, Docs and Test directories if not existing."
+	
+	# Just manually create the Private and Public directories.
+	# (because calling the Test task when any of these folders doesn't exist throws an error)
+	New-Item -ItemType Directory -Force -Path ".\Source\Public\"
+	New-Item -ItemType Directory -Force -Path ".\Source\Private\"
+
+	# Just manually create the Docs and Tests directories.
+	# (because calling the Build task when any of these folders doesn't exist throws an error)
+	New-Item -ItemType Directory -Force -Path ".\Docs\"
+	New-Item -ItemType Directory -Force -Path ".\Tests\"
 }
 
 task Test {
     try {
-        # Just manually create the Private and Public directories.
-        # (because calling the function when the folder doesn't exist throws an error)
-        New-Item -ItemType Directory -Force -Path ".\Source\Public\"
-        New-Item -ItemType Directory -Force -Path ".\Source\Private\"
-        
         Write-Verbose -Message "Running PSScriptAnalyzer on Public functions"
         Invoke-ScriptAnalyzer ".\Source\Public" -Recurse
         Write-Verbose -Message "Running PSScriptAnalyzer on Private functions"
