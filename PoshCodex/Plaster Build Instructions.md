@@ -4,7 +4,7 @@
 
 Copilot for your PowerShell terminal.
 
-## Instructions
+## Build Instructions for Developers
 
 This module can be loaded as-is by importing PoshCodex.psd1. This is mainly intended for development purposes.
 
@@ -21,8 +21,8 @@ To build the module, make sure you have the following pre-req modules:
 - PowerShellGet (Required Version 1.6.0)
 - ModuleBuilder (Required Version 1.0.0)
 
-```pwsh
-Install-Module Pester -Force -RequiredVersion 4.1.1
+```powershell
+Install-Module Pester -Force -RequiredVersion 4.1.1 -SkipPublisherCheck
 Install-Module InvokeBuild -Force -RequiredVersion 3.2.1
 Install-Module PowerShellGet -Force -RequiredVersion 1.6.0
 Install-Module ModuleBuilder -Force -RequiredVersion 1.0.0
@@ -34,7 +34,7 @@ Start the build by running the following command from the project root:
 Invoke-Build
 ```
 
-This will package all code into files located in .\bin\PoshCodex. That folder is now ready to be installed, copy to any path listed in you PSModulePath environment variable and you are good to go!
+This will package all code into files located in `.\bin\PoshCodex`. That folder is now ready to be installed, copy to any path listed in you PSModulePath environment variable and you are good to go!
 
 ---
 
