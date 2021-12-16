@@ -39,7 +39,7 @@ jobs:
         # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
       - name: Invoke Build
         shell: pwsh
-        run: pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -ExportAlias"
+        run: pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
         
         # Pushing the changes from InvokeBuild to the main branch
       - name: Push changes to Git Repository
