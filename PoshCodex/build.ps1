@@ -35,7 +35,15 @@ task Test {
         Write-Verbose -Message "Running PSScriptAnalyzer on Public functions"
         Invoke-ScriptAnalyzer ".\Source\Public" -Recurse
         Write-Verbose -Message "Running PSScriptAnalyzer on Private functions"
-        Invoke-ScriptAnalyzer ".\Source\Private" -Recurse
+
+        # Check if the Private folder exists. 
+        # (because calling the function when the folder doesn't exist throws an error)
+        if (Test-Path -Path ".\Source\Private"){
+            Invoke-ScriptAnalyzer ".\Source\Private" -Recurse
+        }
+        else {
+            Write-Verbose -Message "No Private folder found"
+        }
     }
     catch {
         Write-Warning $Error[0]
