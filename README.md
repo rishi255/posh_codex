@@ -50,11 +50,14 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 
 - [x] Test basic PS plugin working with hardcoded completions
 - [x] Test plugin by scraping the generated output from [my text-to-PowerShell OpenAI playground.](https://beta.openai.com/playground/p/4FqkeG4WQuIPfOUS6cvXQfQR?model=davinci), until a Codex API key is received.
+- [x] Publish package on NuGet for testing whether all is working fine
+- [ ] Test NuGet package by installing and running
+- [ ] Publish plugin for installation through PSGallery
+- [ ] Publish plugin for installation through Scoop
+- [ ] Add installation instructions to README.md
+- [ ] Integrate with GitHub Actions to auto-publish new versions
 - [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
 - [ ] Test plugin robustness in PowerShell using Codex API key
-- [ ] Publish plugin for installation through PSGallery or Scoop
-- [x] Make an edit-publish workflow to easily publish new versions and make it easier for others to contribute
-- [ ] Add installation instructions to README.md
 - [ ] Add GIF of working demo in terminal
 
 <!-- 1. Install the OpenAI package.
