@@ -38,6 +38,7 @@ task Test {
         Invoke-ScriptAnalyzer ".\Source\Private" -Recurse
     }
     catch {
+        Write-Warning $Error[0]
         throw "Couldn't run Script Analyzer"
     }
 
