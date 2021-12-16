@@ -53,7 +53,7 @@ jobs:
         
         # Uploads the build powershell module as an artifact
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2
         with:
           name: module-artifact # Naming the powershell module artifact
           path: ./Output/ # Saving the powershell module artifact to the path ./Output/
@@ -68,11 +68,11 @@ jobs:
         
         # Downloads the powershell module build artifact made in the build step
       - name: Download build artifact
-        uses: aochmann/actions-download-artifact@1.0.4
+        uses: aochmann/download-artifact@v2
         with:
           repo: ${{github.repository}}
           name: module-artifact # Name of the powershell module artifact
-          path: Artifact/ # Downloads the module to the path ./Artifact/
+          path: ./Artifact/ # Downloads the module to the path ./Artifact/
         
         # Running a powershell command to save the module name as an Environment Variable
       - name: Get Module Name
@@ -86,7 +86,7 @@ jobs:
       - name: Publish to Powershell Gallery
         # You may pin to the exact commit or the version.
         # uses: pcgeek86/publish-powershell-module-action@2a7837ce0746ea58c40574d8d6cbc6c44238edb7
-        uses: pcgeek86/publish-powershell-module-action@v19
+        uses: pcgeek86/publish-powershell-module-action@v20
         with:
           modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
           NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
