@@ -36,6 +36,27 @@ Invoke-Build
 
 This will package all code into files located in `.\bin\PoshCodex`. That folder is now ready to be installed, copy to any path listed in you PSModulePath environment variable and you are good to go!
 
----
+## NuGet publish instructions
+
+NuGet is being used to publish the module for testing, if all goes well then the module can be published to PSGallery.
+
+As mentioned [here](https://docs.microsoft.com/en-us/powershell/scripting/gallery/concepts/publishing-guidelines?view=powershell-7.2), setting up an internal Nuget repository will require more work to set up, but will have **the advantage of validating a few more of the requirements, notably validating use of an API key, and whether or not dependencies are present in the target when you publish.**
+
+[Using NuGet to publish a package on your GitHub repo is described here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-nuget-registry)
+
+Assuming nuget.config exists in posh_codex directory after cloning, run:
+
+```powershell
+dotnet new console --name PoshCodex # (only first time while publishing to NuGet)
+cd ./PoshCodex
+
+# Now, modify PoshCodex.csproj, add the following under PropertyGroup:
+# <RepositoryUrl>
+#     https://github.com/rishi255/posh_codex
+# </RepositoryUrl>
+
+dotnet pack --configuration Release
+dotnet nuget push ".\bin\Release\PoshCodex.1.0.0.nupkg" --api-key=YOUR_GITHUB_PERSONAL_ACCESS_TOKEN
+```
 
 Maintained by Rishikesh Rachchh
