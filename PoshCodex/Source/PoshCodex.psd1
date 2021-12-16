@@ -33,7 +33,7 @@ Copyright = '(c) Rishikesh Rachchh. All rights reserved.'
 Description = 'Copilot for your PowerShell terminal.'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '7.0.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -95,19 +95,19 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('Windows', 'PSEdition_Core', 'PSEdition_Desktop', 'codex', 'copilot', 'terminal', 'powershell-terminal', 'powershell-terminal-copilot', 'open-ai', 'natural-language-to-code')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/rishi255/posh_codex/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/rishi255/posh_codex'
 
         # A URL to an icon representing this module.
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        # ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -116,7 +116,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        # ExternalModuleDependencies = @()
+        ExternalModuleDependencies = @('PSWriteColor', 'PSReadLine', 'PSReadLine.PowerShell')
 
     } # End of PSData hashtable
 
