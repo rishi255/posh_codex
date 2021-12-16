@@ -86,7 +86,7 @@ jobs:
       - name: Publish to Powershell Gallery
         # You may pin to the exact commit or the version.
         # uses: pcgeek86/publish-powershell-module-action@2a7837ce0746ea58c40574d8d6cbc6c44238edb7
-        uses: pcgeek86/publish-powershell-module-action@v19
+        uses: pcgeek86/publish-powershell-module-action@v20
         with:
           modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
           NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
