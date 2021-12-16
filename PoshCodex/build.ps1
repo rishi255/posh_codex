@@ -32,18 +32,16 @@ task Init {
 
 task Test {
     try {
+        # Just manually create the Private and Public directories.
+        # (because calling the function when the folder doesn't exist throws an error)
+        New-Item -ItemType Directory -Force -Path ".\Source\Public\"
+        New-Item -ItemType Directory -Force -Path ".\Source\Private\"
+        
         Write-Verbose -Message "Running PSScriptAnalyzer on Public functions"
         Invoke-ScriptAnalyzer ".\Source\Public" -Recurse
         Write-Verbose -Message "Running PSScriptAnalyzer on Private functions"
-
-        # Check if the Private folder exists. 
-        # (because calling the function when the folder doesn't exist throws an error)
-        if (Test-Path -Path ".\Source\Private"){
-            Invoke-ScriptAnalyzer ".\Source\Private" -Recurse
-        }
-        else {
-            Write-Verbose -Message "No Private folder found"
-        }
+        Invoke-ScriptAnalyzer ".\Source\Private" -Recurse
+        
     }
     catch {
         Write-Warning $Error[0]
