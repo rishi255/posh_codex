@@ -1,4 +1,8 @@
 function Invoke-Completion {
+	# Add cmdletBinding to the parameter list
+	[CmdletBinding()]
+	param()
+	
 	#? If $env:OPENAI_API_KEY is not set, then print message and exit.
 	if ($null -eq $env:OPENAI_API_KEY) {
 		Write-Color "`n`$env:OPENAI_API_KEY", " is not set! Please set it using the following command:`n",

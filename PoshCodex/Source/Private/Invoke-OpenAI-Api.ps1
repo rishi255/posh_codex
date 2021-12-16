@@ -1,4 +1,5 @@
 function Invoke-OpenAI-Api {
+	[CmdletBinding()]
 	param (
 		$BUFFER
 	)
