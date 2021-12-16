@@ -68,7 +68,7 @@ jobs:
         
         # Downloads the powershell module build artifact made in the build step
       - name: Download build artifact
-        uses: aochmann/download-artifact@v2
+        uses: actions/download-artifact@v2
         with:
           repo: ${{github.repository}}
           name: module-artifact # Name of the powershell module artifact
