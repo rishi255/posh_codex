@@ -22,7 +22,7 @@ Describe 'Core Module Tests' -Tags 'CoreModule', 'Unit' {
 		Write-Host "Module Name: $ModuleName"
 		Write-Host "Module Manifest Path: $ModuleManifestPath"
 		Write-Host "Module Manifest Name: $ModuleManifestName"
-		
+
 		Test-ModuleManifest -Path $ModuleManifestPath
 		$? | Should -Be $true
 	}

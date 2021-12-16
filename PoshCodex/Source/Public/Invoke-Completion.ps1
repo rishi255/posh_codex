@@ -14,8 +14,8 @@ function Invoke-Completion {
 	$cursor = $null
 
 	# read text from current buffer
-	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$BUFFER, [ref]$cursor)    
-	
+	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$BUFFER, [ref]$cursor)
+
 	# If the buffer text itself contains double quotes, then we need to escape them.
 	$BUFFER = $BUFFER.Replace('"', '""')
 
