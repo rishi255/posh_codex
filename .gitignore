@@ -12,3 +12,4 @@ debug
 gyPSum
 .vscode
 *.log
+nuget.config
