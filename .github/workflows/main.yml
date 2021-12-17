@@ -1,8 +1,10 @@
 name: Build Module
 on:
-    [pull_request, workflow_dispatch]
-    # "pull_request" Only trigger the workflow if there is a pull request to the main branch
-    # "workflow_dispatch" Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
+    push: # Only trigger the workflow if there is a push to the main branch
+        # (Ideally this should only happen when a PR from develop branch is merged.)
+        branches: [main]
+
+    workflow_dispatch: #Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
 
 jobs:
     # 1st Job -- Building the module
@@ -11,13 +13,11 @@ jobs:
         steps:
             # Checkout the main branch
             - uses: actions/checkout@v2
-              with:
-                  ref: ${{ github.event.pull_request.head.ref }}
 
               # Setting up required powershell modules
             - name: Set required PowerShell modules
               id: psmodulecache
-              uses: potatoqualitee/psmodulecache@v4
+              uses: potatoqualitee/psmodulecache@v2
               with:
                   modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSWriteColor, PSReadLine
 
