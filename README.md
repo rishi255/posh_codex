@@ -84,10 +84,10 @@ Import-Module .\Output\temp\PoshCodex\<version_number>\PoshCodex.psd1
 - [x] Test plugin by scraping the generated output from [my text-to-PowerShell OpenAI playground.](https://beta.openai.com/playground/p/4FqkeG4WQuIPfOUS6cvXQfQR?model=davinci), until a Codex API key is received.
 - [x] Publish package on NuGet for testing whether all is working fine
 - [x] Test NuGet package by installing and running
-- [ ] Publish plugin for installation through PSGallery
+- [x] Publish plugin for installation through PSGallery
+- [x] Add installation instructions to README.md
+- [x] Integrate with GitHub Actions to auto-publish new versions
 - [ ] Publish plugin for installation through Scoop
-- [ ] Add installation instructions to README.md
-- [ ] Integrate with GitHub Actions to auto-publish new versions
 - [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
 - [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Add GIF of working demo in terminal
