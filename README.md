@@ -30,6 +30,10 @@
             src="https://img.shields.io/github/repo-size/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
             alt="GitHub repository size"
     /></a>
+    <a href="https://github.com/rishi255/posh_codex"
+    ><img
+        src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20Module?colorA=2c2837&style=for-the-badge" alt="GitHub Workflow build status"></img>
+    </a>
 </p>
 
 <p align="center">
