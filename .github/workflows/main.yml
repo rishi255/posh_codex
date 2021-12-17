@@ -17,7 +17,7 @@ jobs:
               # Setting up required powershell modules
             - name: Set required PowerShell modules
               id: psmodulecache
-              uses: potatoqualitee/psmodulecache@v2
+              uses: potatoqualitee/psmodulecache@v1
               with:
                   modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSWriteColor, PSReadLine
 
