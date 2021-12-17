@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             # Checkout the main branch
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@main
 
               # Setting up required powershell modules
             - name: Set required PowerShell modules
