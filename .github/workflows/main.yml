@@ -1,9 +1,7 @@
 name: Build Module
-on:
-  pull_request: # Only trigger the workflow if there is a pull request to the main branch
-    branches: [ main ]
-    
-  workflow_dispatch: # Enables the possibility to trigger the workflow manually
+on: [pull_request, workflow_dispatch]
+  # "pull_request" Only trigger the workflow if there is a pull request to the main branch
+  # "workflow_dispatch" Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
 
 jobs:
   # 1st Job -- Building the module
@@ -39,7 +37,12 @@ jobs:
         # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
       - name: Invoke Build
         shell: pwsh
-        run: pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
+        run: |
+          echo "Directory structure before invoke-build:"
+          ls -R
+          pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
+          echo "Directory structure after invoke-build:"
+          ls -R
         
         # Pushing the changes from InvokeBuild to the main branch
       - name: Push changes to Git Repository
@@ -56,7 +59,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: module-artifact # Naming the powershell module artifact
-          path: ./Output/ # Saving the powershell module artifact to the path ./Output/
+          path: ./PoshCodex/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
   
   # 2nd Job -- Releasing the module
   release:
@@ -70,7 +73,6 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-          repo: ${{github.repository}}
           name: module-artifact # Name of the powershell module artifact
           path: ./Artifact/ # Downloads the module to the path ./Artifact/
         
