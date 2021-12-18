@@ -70,9 +70,9 @@ jobs:
                   ls -R
 
               # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
-              # WITH BUMP VERSION, FOR MASTER BRANCH
+              # WITH BUMP VERSION, FOR MAIN BRANCH
             - name: Invoke Build
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               shell: pwsh
               run: |
                   echo "Directory structure before invoke-build:"
@@ -101,9 +101,9 @@ jobs:
     # 2nd Job -- Releasing the module, skip job if should_skip is true
     release:
         needs: [pre_job, build]
-        # Only run the "release" job if current branch is master, AND should_skip is NOT 'true'
+        # Only run the "release" job if current branch is main, AND should_skip is NOT 'true'
         # This will break if 'pull_request' is added to the workflow triggers, since PRs don't have a current branch before they are merged.
-        if: github.ref == 'refs/heads/master' && needs.pre_job.outputs.should_skip != 'true'
+        if: github.ref == 'refs/heads/main' && needs.pre_job.outputs.should_skip != 'true'
         runs-on: ubuntu-latest
         steps:
             # Check out the main branch
