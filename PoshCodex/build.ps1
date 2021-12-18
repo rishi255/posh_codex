@@ -1,7 +1,8 @@
 param (
     [ValidateSet("Release", "debug")]$Configuration = "debug",
     [Parameter(Mandatory=$false)][String]$NugetAPIKey,
-    [Parameter(Mandatory=$false)][Switch]$ExportAlias
+    [Parameter(Mandatory=$false)][Switch]$ExportAlias,
+    [Parameter(Mandatory=$false)][Switch]$BumpVersion
 )
 
 task Init {
@@ -29,17 +30,17 @@ task Init {
         Install-Module -Name PowerShellGet -Scope CurrentUser -Force
     }
 
-	Write-Verbose -Message "Creating Public, Private, Docs and Test directories if not existing."
-	
-	# Just manually create the Private and Public directories.
-	# (because calling the Test task when any of these folders doesn't exist throws an error)
-	New-Item -ItemType Directory -Force -Path ".\Source\Public\"
-	New-Item -ItemType Directory -Force -Path ".\Source\Private\"
+    Write-Verbose -Message "Creating Public, Private, Docs and Test directories if not existing."
+    
+    # Just manually create the Private and Public directories.
+    # (because calling the Test task when any of these folders doesn't exist throws an error)
+    New-Item -ItemType Directory -Force -Path ".\Source\Public\"
+    New-Item -ItemType Directory -Force -Path ".\Source\Private\"
 
-	# Just manually create the Docs and Tests directories.
-	# (because calling the Build task when any of these folders doesn't exist throws an error)
-	New-Item -ItemType Directory -Force -Path ".\Docs\"
-	New-Item -ItemType Directory -Force -Path ".\Tests\"
+    # Just manually create the Docs and Tests directories.
+    # (because calling the Build task when any of these folders doesn't exist throws an error)
+    New-Item -ItemType Directory -Force -Path ".\Docs\"
+    New-Item -ItemType Directory -Force -Path ".\Tests\"
 }
 
 task Test {
@@ -189,11 +190,21 @@ task Build -if($Configuration -eq "Release"){
         $publicFunctions = Get-ChildItem -Path ".\Source\Public\*.ps1"
         $privateFunctions = Get-ChildItem -Path ".\Source\Private\*.ps1"
         $totalFunctions = $publicFunctions.count + $privateFunctions.count
-        $ModuleBuildNumber = $oldModuleVersion.Build + 1
-        Write-Verbose -Message "Updating the Moduleversion"
-        $Script:ModuleVersion = "$($oldModuleVersion.Major).$($totalFunctions).$($ModuleBuildNumber)"
-        Write-Verbose "Mew ModuleVersion: $ModuleVersion"
-        Update-ModuleManifest -Path ".\Source\$($ModuleName).psd1" -ModuleVersion $ModuleVersion
+
+        if($BumpVersion.IsPresent) {
+            Write-Host "BumpVersion switched passed! Bumping Version..."
+            Write-Host "Old ModuleVersion: $oldModuleVersion"
+
+            $ModuleBuildNumber = $oldModuleVersion.Build + 1
+            Write-Verbose -Message "Updating the Moduleversion"
+            $Script:ModuleVersion = "$($oldModuleVersion.Major).$($totalFunctions).$($ModuleBuildNumber)"
+            Write-Host "Mew ModuleVersion: $ModuleVersion"
+            Update-ModuleManifest -Path ".\Source\$($ModuleName).psd1" -ModuleVersion $ModuleVersion
+        }
+        else {
+            Write-Host "NOT Bumping Version as BumpVersion switch not passed!"
+            Write-Host "This probably means the build script was called from the develop branch: version is only bumped in the master branch"
+        }
     }
 
     if(Test-Path ".\Output\$($ModuleName)\$($ModuleVersion)"){

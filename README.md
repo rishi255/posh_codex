@@ -59,6 +59,8 @@ Install-Module -Name PoshCodex -Force
 
 # To check if it's installed properly:
 Get-Module -Name PoshCodex # should display the Invoke-Completion command
+
+echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
 ### 2. By cloning this repository
@@ -76,6 +78,37 @@ Invoke-Build -File build.ps1
 Import-Module .\Output\temp\PoshCodex\<version_number>\PoshCodex.psd1
 
 # Now the module can be used.
+```
+
+## Configuration of the OpenAI Codex API Key
+
+This module requires access to the OpenAI Codex API for best results. You can join the waitlist for a Codex API key by following the instructions [here](https://openai.com/blog/openai-codex/).
+
+Until you get a Codex API key, you can use the [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
+**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are not even close to the ones from the Codex API._**
+
+The module expects an environment variable called OPENAI_API_KEY to be set in the environment.
+You can set it with the following command:
+
+```powershell
+$env:OPENAI_API_KEY="your_api_key"
+```
+
+## Usage
+
+TODO - Add usage instructions
+
+```powershell
+# Import the module first to activate the keybind (can be done in your $PROFILE that runs on every shell start)
+Import-Module PoshCodex
+
+# Now you can use the keybinds for completion
+# If the keybind is Ctrl+Alt+X (default), then:
+
+# type some comment that describes what you want to do, eg:
+"# install the 'scoop' module" # minus the quotes
+
+# Just hit Ctrl+Alt+X (or your own keybind if changed) and the AI will write the corresponding code for you.
 ```
 
 ## TODO checklist
