@@ -80,7 +80,7 @@ jobs:
           pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -BumpVersion"
           echo "Directory structure after invoke-build:"
           ls -R
-          $moduleversion=(Test-ModuleManifest -Path ".\Source\$($ModuleName).psd1").Version.toString()
+          $moduleversion=(Test-ModuleManifest -Path ".\PoshCodex\Source\PoshCodex.psd1").Version.toString()
           echo "Setting Module version environment variable: $moduleversion"
           echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
