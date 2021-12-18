@@ -80,6 +80,9 @@ jobs:
           pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -BumpVersion"
           echo "Directory structure after invoke-build:"
           ls -R
+          $moduleversion=(Test-ModuleManifest -Path ".\Source\$($ModuleName).psd1").Version.toString()
+          echo "Setting Module version environment variable: $moduleversion"
+          echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
         # Pushing the changes from InvokeBuild to the main branch
       - name: Push changes to Git Repository
@@ -88,7 +91,9 @@ jobs:
           git config --global user.email 'rishikeshrachchh@gmail.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
-          git diff-index --quiet HEAD || git commit -am "Bump version"
+          echo "Getting module number from GitHub env variables: "
+          echo "MODULE_VERSION = $MODULE_VERSION"
+          git diff-index --quiet HEAD || git commit -am "Bump to v$MODULE_VERSION"
           git push
 
         # Uploads the build powershell module as an artifact
