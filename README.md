@@ -1,47 +1,66 @@
 <h1 align="center">⌨️ 🦾 PowerShell Codex</h1>
 
-<p align="center">
-    AI in the command line. Powered by the AI behind GitHub Copilot.
-</p>
+<div align="center">
+  AI in the command line. Powered by the AI behind GitHub Copilot.
+</div>
 
-<p align="center">
-    <a href="https://github.com/rishi255/posh_codex/stargazers"
-        ><img
-            src="https://img.shields.io/github/stars/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
-            alt="Repository's starts"
-    /></a>
-    <a href="https://github.com/rishi255/posh_codex/issues"
-        ><img
-            src="https://img.shields.io/github/issues-raw/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
-            alt="Issues"
-    /></a>
-    <a href="https://github.com/rishi255/posh_codex/blob/main/LICENSE"
-        ><img
-            src="https://img.shields.io/github/license/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
-            alt="License"
-    /><br />
-    <a href="https://github.com/rishi255/posh_codex/commits/main"
-  ><img
-   src="https://img.shields.io/github/last-commit/rishi255/posh_codex/main?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
-   alt="Latest commit"
-    /></a>
-    <a href="https://github.com/rishi255/posh_codex"
-        ><img
-            src="https://img.shields.io/github/repo-size/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
-            alt="GitHub repository size"
-    /></a>
-    <a href="https://github.com/rishi255/posh_codex"
-    ><img
-        src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20Module?colorA=2c2837&style=for-the-badge" alt="GitHub Workflow build status"></img>
-    </a>
-</p>
+<br/>
 
-<p align="center">
-    <img src='https://raw.githubusercontent.com/tom-doerr/bins/main/zsh_codex/zc4.gif'>
-    <p align="center">
-        You just need to write a comment or variable name and the AI will write the corresponding code.
-    </p>
-</p>
+<div align="center">
+  <a href="https://www.powershellgallery.com/packages/PoshCodex">
+    <img
+      src="https://img.shields.io/powershellgallery/dt/PoshCodex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt=""
+    />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex/stargazers">
+    <img
+      src="https://img.shields.io/github/stars/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt="Repository's starts"
+    />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex/issues">
+    <img
+      src="https://img.shields.io/github/issues-raw/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt="Issues"
+    />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex/blob/main/LICENSE">
+    <img
+      src="https://img.shields.io/github/license/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt="License"
+    />
+    <br />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex/commits/main">
+    <img
+      src="https://img.shields.io/github/last-commit/rishi255/posh_codex/main?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt="Latest commit"
+    />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex">
+    <img
+      src="https://img.shields.io/github/repo-size/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      alt="GitHub repository size"
+    />
+  </a>
+  <a href="https://github.com/rishi255/posh_codex">
+    <img
+      src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20Module?colorA=2c2837&style=for-the-badge"
+      alt="GitHub Workflow build status"
+    />
+  </a>
+</div>
+
+<div align="center">
+  <img
+    src="https://raw.githubusercontent.com/tom-doerr/bins/main/zsh_codex/zc4.gif"
+  />
+  <div align="center">
+    You just need to write a comment or variable name and the AI will write the
+    corresponding code.
+  </div>
+</div>
 
 ## What is it?
 
