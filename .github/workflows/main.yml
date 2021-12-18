@@ -1,14 +1,34 @@
-name: Build Module
+name: Build and Publish Module
 on:
-    push: # Only trigger the workflow if there is a push to the main branch
-        # (Ideally this should only happen when a PR from develop branch is merged.)
-        branches: [main]
+    push: # Only trigger the workflow if there is a push
+        branches: [
+                main, # This will build as well as release (Ideally this should only happen when a PR from develop branch is merged.)
+                develop, # This will only build but not release - see the if condition insid the "release" job below.
+            ]
 
     workflow_dispatch: #Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
-
 jobs:
-    # 1st Job -- Building the module
+    # Configure skip-duplicate actions
+    pre_job:
+        # continue-on-error: true # Uncomment once integration is finished
+        runs-on: ubuntu-latest
+        # Map a step output to a job output
+        outputs:
+            should_skip: ${{ steps.skip_check.outputs.should_skip }}
+        steps:
+            - id: skip_check
+              uses: fkirc/skip-duplicate-actions@master
+              with:
+                  # All of these options are optional, so you can remove them if you are happy with the defaults
+                  concurrent_skipping: "always"
+                  skip_after_successful_duplicate: "true"
+                  paths_ignore: '["**.md", ".gitignore", "**/Docs/**"]'
+                  do_not_skip: '["workflow_dispatch", "schedule"]'
+
+    # 1st Job -- Building the module, skip job if should_skip is true
     build:
+        needs: pre_job
+        if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
         runs-on: ubuntu-latest
         steps:
             # Checkout the main branch
@@ -54,7 +74,7 @@ jobs:
                   git config --global user.email 'rishikeshrachchh@gmail.com'
                   git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
                   git add .
-                  git commit -am "Pushing Artifacts"
+                  git commit -am "Bump version"
                   git push
 
               # Uploads the build powershell module as an artifact
@@ -64,9 +84,12 @@ jobs:
                   name: module-artifact # Naming the powershell module artifact
                   path: ./PoshCodex/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
 
-    # 2nd Job -- Releasing the module
+    # 2nd Job -- Releasing the module, skip job if should_skip is true
     release:
-        needs: build
+        needs: [pre_job, build]
+        # Only run the "release" job if current branch is master, AND should_skip is NOT 'true'
+        # This will break if 'pull_request' is added to the workflow triggers, since PRs don't have a current branch before they are merged.
+        if: github.ref == 'refs/heads/master' && needs.pre_job.outputs.should_skip != 'true'
         runs-on: ubuntu-latest
         steps:
             # Check out the main branch

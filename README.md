@@ -85,7 +85,7 @@ Import-Module .\Output\temp\PoshCodex\<version_number>\PoshCodex.psd1
 This module requires access to the OpenAI Codex API for best results. You can join the waitlist for a Codex API key by following the instructions [here](https://openai.com/blog/openai-codex/).
 
 Until you get a Codex API key, you can use the [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
-**_However, the GPT-3 is not tailored for code completions and hence the suggestions are not even close to the ones from the Codex API._**
+**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are not even close to the ones from the Codex API._**
 
 The module expects an environment variable called OPENAI_API_KEY to be set in the environment.
 You can set it with the following command:
