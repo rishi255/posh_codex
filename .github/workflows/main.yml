@@ -1,134 +1,134 @@
 name: Build and Publish Module
 on:
-    push: # Only trigger the workflow if there is a push
-        branches: [
-                main, # This will build as well as release (Ideally this should only happen when a PR from develop branch is merged.)
-                develop, # This will only build but not release - see the if condition insid the "release" job below.
-            ]
+  push: # Only trigger the workflow if there is a push
+    branches: [
+        main, # This will build as well as release (Ideally this should only happen when a PR from develop branch is merged.)
+        develop, # This will only build but not release - see the if condition insid the "release" job below.
+      ]
 
-    workflow_dispatch: #Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
+  workflow_dispatch: #Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
 jobs:
-    # Configure skip-duplicate actions
-    pre_job:
-        # continue-on-error: true # Uncomment once integration is finished
-        runs-on: ubuntu-latest
-        # Map a step output to a job output
-        outputs:
-            should_skip: ${{ steps.skip_check.outputs.should_skip }}
-        steps:
-            - id: skip_check
-              uses: fkirc/skip-duplicate-actions@master
-              with:
-                  # All of these options are optional, so you can remove them if you are happy with the defaults
-                  concurrent_skipping: "always"
-                  skip_after_successful_duplicate: "true"
-                  paths_ignore: '["**.md", ".gitignore", "**/Docs/**"]'
-                  do_not_skip: '["workflow_dispatch", "schedule"]'
+  # Configure skip-duplicate actions
+  pre_job:
+    # continue-on-error: true # Uncomment once integration is finished
+    runs-on: ubuntu-latest
+    # Map a step output to a job output
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        uses: fkirc/skip-duplicate-actions@master
+        with:
+          # All of these options are optional, so you can remove them if you are happy with the defaults
+          concurrent_skipping: "always"
+          skip_after_successful_duplicate: "true"
+          paths_ignore: '["**.md", ".gitignore", ".prettierrc", "**/Docs/**"]'
+          do_not_skip: '["workflow_dispatch", "schedule"]'
 
-    # 1st Job -- Building the module, skip job if should_skip is true
-    build:
-        needs: pre_job
-        if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
-        runs-on: ubuntu-latest
-        steps:
-            # Checkout the main branch
-            - uses: actions/checkout@main
+  # 1st Job -- Building the module, skip job if should_skip is true
+  build:
+    needs: pre_job
+    if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the main branch
+      - uses: actions/checkout@main
 
-              # Setting up required powershell modules
-            - name: Set required PowerShell modules
-              id: psmodulecache
-              uses: potatoqualitee/psmodulecache@v1
-              with:
-                  modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSWriteColor, PSReadLine
+        # Setting up required powershell modules
+      - name: Set required PowerShell modules
+        id: psmodulecache
+        uses: potatoqualitee/psmodulecache@v1
+        with:
+          modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSWriteColor, PSReadLine
 
-              # Setting up the powershell module cache
-            - name: Setup PowerShell module cache
-              id: cacher
-              uses: actions/cache@v2
-              with:
-                  path: ${{ steps.psmodulecache.outputs.modulepath }}
-                  key: ${{ steps.psmodulecache.outputs.keygen }}
+        # Setting up the powershell module cache
+      - name: Setup PowerShell module cache
+        id: cacher
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.psmodulecache.outputs.modulepath }}
+          key: ${{ steps.psmodulecache.outputs.keygen }}
 
-              # Installing the required powershell module, if not cached
-            - name: Install required PowerShell modules
-              if: steps.cacher.outputs.cache-hit != 'true'
-              shell: pwsh
-              run: |
-                  Set-PSRepository PSGallery -InstallationPolicy Trusted
-                  Install-Module ${{ steps.psmodulecache.outputs.needed }} -ErrorAction Stop
+        # Installing the required powershell module, if not cached
+      - name: Install required PowerShell modules
+        if: steps.cacher.outputs.cache-hit != 'true'
+        shell: pwsh
+        run: |
+          Set-PSRepository PSGallery -InstallationPolicy Trusted
+          Install-Module ${{ steps.psmodulecache.outputs.needed }} -ErrorAction Stop
 
-              # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
-              # WITHOUT BUMP VERSION, FOR DEVELOP BRANCH
-            - name: Invoke Build
-              if: github.ref == 'refs/heads/develop'
-              shell: pwsh
-              run: |
-                  echo "Directory structure before invoke-build:"
-                  ls -R
-                  pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
-                  echo "Directory structure after invoke-build:"
-                  ls -R
+        # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
+        # WITHOUT BUMP VERSION, FOR DEVELOP BRANCH
+      - name: Invoke Build
+        if: github.ref == 'refs/heads/develop'
+        shell: pwsh
+        run: |
+          echo "Directory structure before invoke-build:"
+          ls -R
+          pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
+          echo "Directory structure after invoke-build:"
+          ls -R
 
-              # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
-              # WITH BUMP VERSION, FOR MAIN BRANCH
-            - name: Invoke Build
-              if: github.ref == 'refs/heads/main'
-              shell: pwsh
-              run: |
-                  echo "Directory structure before invoke-build:"
-                  ls -R
-                  pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -BumpVersion"
-                  echo "Directory structure after invoke-build:"
-                  ls -R
+        # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
+        # WITH BUMP VERSION, FOR MAIN BRANCH
+      - name: Invoke Build
+        if: github.ref == 'refs/heads/main'
+        shell: pwsh
+        run: |
+          echo "Directory structure before invoke-build:"
+          ls -R
+          pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -BumpVersion"
+          echo "Directory structure after invoke-build:"
+          ls -R
 
-              # Pushing the changes from InvokeBuild to the main branch
-            - name: Push changes to Git Repository
-              run: |
-                  git config --global user.name 'rishi255'
-                  git config --global user.email 'rishikeshrachchh@gmail.com'
-                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-                  git add .
-                  git diff-index --quiet HEAD || git commit -am "Bump version"
-                  git push
+        # Pushing the changes from InvokeBuild to the main branch
+      - name: Push changes to Git Repository
+        run: |
+          git config --global user.name 'rishi255'
+          git config --global user.email 'rishikeshrachchh@gmail.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add .
+          git diff-index --quiet HEAD || git commit -am "Bump version"
+          git push
 
-              # Uploads the build powershell module as an artifact
-            - name: Upload Build Artifact
-              uses: actions/upload-artifact@v2
-              with:
-                  name: module-artifact # Naming the powershell module artifact
-                  path: ./PoshCodex/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
+        # Uploads the build powershell module as an artifact
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: module-artifact # Naming the powershell module artifact
+          path: ./PoshCodex/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
 
-    # 2nd Job -- Releasing the module, skip job if should_skip is true
-    release:
-        needs: [pre_job, build]
-        # Only run the "release" job if current branch is main, AND should_skip is NOT 'true'
-        # This will break if 'pull_request' is added to the workflow triggers, since PRs don't have a current branch before they are merged.
-        if: github.ref == 'refs/heads/main' && needs.pre_job.outputs.should_skip != 'true'
-        runs-on: ubuntu-latest
-        steps:
-            # Check out the main branch
-            - uses: actions/checkout@main
+  # 2nd Job -- Releasing the module, skip job if should_skip is true
+  release:
+    needs: [pre_job, build]
+    # Only run the "release" job if current branch is main, AND should_skip is NOT 'true'
+    # This will break if 'pull_request' is added to the workflow triggers, since PRs don't have a current branch before they are merged.
+    if: github.ref == 'refs/heads/main' && needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the main branch
+      - uses: actions/checkout@main
 
-              # Downloads the powershell module build artifact made in the build step
-            - name: Download build artifact
-              uses: actions/download-artifact@v2
-              with:
-                  name: module-artifact # Name of the powershell module artifact
-                  path: ./Artifact/ # Downloads the module to the path ./Artifact/
+        # Downloads the powershell module build artifact made in the build step
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: module-artifact # Name of the powershell module artifact
+          path: ./Artifact/ # Downloads the module to the path ./Artifact/
 
-              # Running a powershell command to save the module name as an Environment Variable
-            - name: Get Module Name
-              run: |
-                  Write-Host $Env:GITHUB_REF
-                  $ModuleName = (Get-ChildItem -Path ./Artifact/).Name
-                  echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
-              shell: pwsh
+        # Running a powershell command to save the module name as an Environment Variable
+      - name: Get Module Name
+        run: |
+          Write-Host $Env:GITHUB_REF
+          $ModuleName = (Get-ChildItem -Path ./Artifact/).Name
+          echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
 
-              # Publishing the module to powershell gallery
-            - name: Publish to Powershell Gallery
-              # You may pin to the exact commit or the version.
-              # uses: pcgeek86/publish-powershell-module-action@2a7837ce0746ea58c40574d8d6cbc6c44238edb7
-              uses: pcgeek86/publish-powershell-module-action@v20
-              with:
-                  modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
-                  NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
+        # Publishing the module to powershell gallery
+      - name: Publish to Powershell Gallery
+        # You may pin to the exact commit or the version.
+        # uses: pcgeek86/publish-powershell-module-action@2a7837ce0746ea58c40574d8d6cbc6c44238edb7
+        uses: pcgeek86/publish-powershell-module-action@v20
+        with:
+          modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
+          NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
