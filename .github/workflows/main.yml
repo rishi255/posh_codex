@@ -58,12 +58,26 @@ jobs:
                   Install-Module ${{ steps.psmodulecache.outputs.needed }} -ErrorAction Stop
 
               # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
+              # WITHOUT BUMP VERSION, FOR DEVELOP BRANCH
             - name: Invoke Build
+              if: github.ref == 'refs/heads/develop'
               shell: pwsh
               run: |
                   echo "Directory structure before invoke-build:"
                   ls -R
                   pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release'"
+                  echo "Directory structure after invoke-build:"
+                  ls -R
+
+              # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
+              # WITH BUMP VERSION, FOR MASTER BRANCH
+            - name: Invoke Build
+              if: github.ref == 'refs/heads/master'
+              shell: pwsh
+              run: |
+                  echo "Directory structure before invoke-build:"
+                  ls -R
+                  pwsh -command "Invoke-Build -File ./PoshCodex/build.ps1 -Configuration 'Release' -BumpVersion"
                   echo "Directory structure after invoke-build:"
                   ls -R
 
