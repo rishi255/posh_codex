@@ -87,6 +87,7 @@ jobs:
           git config --global user.email 'rishikeshrachchh@gmail.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
+          git diff-index --quiet HEAD || git commit -am "Bump to v{{ env.MODULE_VERSION }}"
           echo "Getting module number from GitHub env variables: "
           echo "MODULE_VERSION = ${{ env.MODULE_VERSION }}"
 
