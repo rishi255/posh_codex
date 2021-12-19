@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.10'
+ModuleVersion = '0.2.11'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,8 @@ PowerShellVersion = '6.0.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @('PSWriteColor', 'PSReadLine')
+RequiredModules = @('PSWriteColor', 
+               'PSReadLine')
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
