@@ -8,7 +8,8 @@ schema: 2.0.0
 # Invoke-Completion
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Add a synopsis here at some point.
 
 ## SYNTAX
 
@@ -17,11 +18,13 @@ Invoke-Completion [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 {{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -36,9 +39,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 ## OUTPUTS
 
 ### System.Object
+
 ## NOTES
 
 ## RELATED LINKS

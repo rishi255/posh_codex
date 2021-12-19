@@ -139,7 +139,11 @@ Import-Module PoshCodex
 - [x] Publish plugin for installation through PSGallery
 - [x] Add installation instructions to README.md
 - [x] Integrate with GitHub Actions to auto-publish new versions
+- [x] Make required modules auto-install when this module is installed
 - [ ] Publish plugin for installation through Scoop
+- [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Invoke-Completion.md`
 - [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
 - [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Add GIF of working demo in terminal
+- [ ] Make completed text a lighter colour to show that it is only a potential solution
+- [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
