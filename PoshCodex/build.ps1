@@ -190,18 +190,22 @@ task Build -if($Configuration -eq "Release"){
         $publicFunctions = Get-ChildItem -Path ".\Source\Public\*.ps1"
         $privateFunctions = Get-ChildItem -Path ".\Source\Private\*.ps1"
         $totalFunctions = $publicFunctions.count + $privateFunctions.count
+        
+        $ModuleBuildNumber = $oldModuleVersion.Build
+        $Script:ModuleVersion = "$($oldModuleVersion.Major).$($totalFunctions).$($ModuleBuildNumber)"
 
         if($BumpVersion.IsPresent) {
             Write-Host "BumpVersion switched passed! Bumping Version..."
             Write-Host "Old ModuleVersion: $oldModuleVersion"
 
-            $ModuleBuildNumber = $oldModuleVersion.Build + 1
+            $ModuleBuildNumber = $ModuleBuildNumber + 1
             Write-Verbose -Message "Updating the Moduleversion"
             $Script:ModuleVersion = "$($oldModuleVersion.Major).$($totalFunctions).$($ModuleBuildNumber)"
             Write-Host "Mew ModuleVersion: $ModuleVersion"
             Update-ModuleManifest -Path ".\Source\$($ModuleName).psd1" -ModuleVersion $ModuleVersion
         }
         else {
+            Write-Host "Version number: v$ModuleVersion"
             Write-Host "NOT Bumping Version as BumpVersion switch not passed!"
             Write-Host "This probably means the build script was called from the develop branch: version is only bumped in the master branch"
         }
@@ -312,6 +316,7 @@ task Build -if($Configuration -eq "Release"){
     Write-Verbose -Message "Importing the module to be able to output documentation"
     Try {
         Write-Verbose -Message "Importing the module to be able to output documentation"
+        Write-Host "Module version: $($ModuleVersion)"
         Import-Module ".\Output\$($ModuleName)\$ModuleVersion\$($ModuleName).psm1"
     }
     catch {
@@ -332,10 +337,11 @@ task Build -if($Configuration -eq "Release"){
     }
     else {
         Write-Verbose -Message "Removing old Help files, to generate new files."
-        Remove-Item -Path ".\Docs\*.*" -Exclude "about_*"
+        # Remove-Item -Path ".\Docs\*.*" -Exclude "about_*"
         if(Get-Module -Name $($ModuleName)) {
-            Write-Verbose -Message "Module: $($ModuleName) is imported into session, generating Help Files"
-            New-MarkdownHelp -Module $ModuleName -OutputFolder ".\Docs"
+            Write-Verbose -Message "Module: $($ModuleName) is imported into session, updating Help Files"
+            # New-MarkdownHelp -Module $ModuleName -OutputFolder ".\Docs"
+            Update-MarkdownHelp ".\Docs"
             New-ExternalHelp ".\Docs" -OutputPath ".\Output\$($ModuleName)\$($ModuleVersion)\en-US\"
         }
     }
