@@ -21,7 +21,7 @@ jobs:
         with:
           # All of these options are optional, so you can remove them if you are happy with the defaults
           concurrent_skipping: "never"
-          skip_after_successful_duplicate: "true"
+          skip_after_successful_duplicate: "false"
           paths_ignore: '["**.md", ".gitignore", ".prettierrc", "**/Docs/**"]'
           do_not_skip: '["workflow_dispatch", "schedule"]'
 
