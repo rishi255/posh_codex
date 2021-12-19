@@ -2,8 +2,8 @@ name: Build and Publish Module
 on:
   push: # Only trigger the workflow if there is a push
     branches: [
-        main, # This will build as well as release (Ideally this should only happen when a PR from develop branch is merged.)
-        develop, # This will only build but not release - see the if condition insid the "release" job below.
+        main, # This will build as well as release (Ideally this should only happen as soon as a PR from develop branch is merged.)
+        develop, # This will only build but not release - see the if condition inside the "release" job below.
       ]
 
   workflow_dispatch: #Enables the possibility to trigger the workflow manually from GitHub Actions in the repository
@@ -70,7 +70,7 @@ jobs:
         # Version is bumped regardless of branch, but publish to gallery will only happen if the commit reaches the main branch.
         # And if it does reach the main branch, it means builds have passed anyway.
         # So this workflow should be fine.
-      - name: Invoke Build
+      - name: Invoke Build and set ModuleVersion environment variable
         shell: pwsh
         run: |
           pwsh -command "Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose"
@@ -79,7 +79,9 @@ jobs:
           echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
         # Pushing the changes from InvokeBuild to the main branch
+        # DON'T COMMIT THE VERSION BUMP IF IT'S DEVELOP BRANCH.
       - name: Push changes to Git Repository
+        if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.name 'rishi255'
           git config --global user.email 'rishikeshrachchh@gmail.com'
@@ -87,18 +89,6 @@ jobs:
           git add .
           echo "Getting module number from GitHub env variables: "
           echo "MODULE_VERSION = ${{ env.MODULE_VERSION }}"
-
-      - name: "Commit if develop branch"
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          git diff-index --quiet HEAD || git commit -am "Develop: bump to v${{ env.MODULE_VERSION }}"
-          git push
-
-      - name: "Commit if main branch"
-        if: github.ref == 'refs/heads/main'
-        run: |
-          git diff-index --quiet HEAD || git commit -am "Bump to v${{ env.MODULE_VERSION }}"
-          git push
 
         # Uploads the build powershell module as an artifact
       - name: Upload Build Artifact
