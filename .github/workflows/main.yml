@@ -71,7 +71,6 @@ jobs:
         # And if it does reach the main branch, it means builds have passed anyway.
         # So this workflow should be fine.
       - name: Invoke Build
-        if: github.ref == 'refs/heads/main'
         shell: pwsh
         run: |
           pwsh -command "Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose"
