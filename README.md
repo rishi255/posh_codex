@@ -47,7 +47,7 @@
   </a>
   <a href="https://github.com/rishi255/posh_codex">
     <img
-      src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20Module?colorA=2c2837&style=for-the-badge"
+      src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20and%20Publish%20Module?colorA=2c2837&style=for-the-badge"
       alt="GitHub Workflow build status"
     />
   </a>
