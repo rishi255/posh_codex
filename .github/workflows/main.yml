@@ -57,6 +57,7 @@ jobs:
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module ${{ steps.psmodulecache.outputs.needed }} -ErrorAction Stop
 
+        #! Hardcoded module name here and stored as env variable, used by this job only. This step is duplicated in the next job.
         # Running a powershell command to save the module name as an Environment Variable
       - name: Set Module Name
         run: |
@@ -115,6 +116,15 @@ jobs:
         with:
           name: module-artifact # Name of the powershell module artifact
           path: ./Artifact/ # Downloads the module to the path ./Artifact/
+
+        #! Hardcoded module name here as can't use env variable from previous job without complicating code
+        # Running a powershell command to save the module name as an Environment Variable
+      - name: Set Module Name
+        run: |
+          Write-Host $Env:GITHUB_REF
+          $ModuleName="PoshCodex"
+          echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+        shell: pwsh
 
         # Publishing the module to powershell gallery
       - name: Publish to Powershell Gallery
