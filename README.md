@@ -52,7 +52,7 @@
     />
   </a>
 </div>
-
+<br/>
 <div align="center">
   <img
     src="https://raw.githubusercontent.com/tom-doerr/bins/main/zsh_codex/zc4.gif"
@@ -81,24 +81,26 @@ Install-Module -Name PoshCodex -Force
 # To check if it's installed properly:
 Get-Module -Name PoshCodex # should display the Invoke-Completion command
 
+# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 2. By cloning this repository
+### 2. By building the module yourself
 
 ```powershell
 # Clone the repository
 git clone https://github.com/rishi255/posh_codex
 cd .\posh_codex\PoshCodex\
 
-# Install Invoke-Build module to build the module
+# Install Invoke-Build and build the module
 Install-Module InvokeBuild -Force -RequiredVersion 3.2.1
-Invoke-Build -File build.ps1
+Invoke-Build -File build.ps1 -Configuration 'Release'
 
 # Now import the built module
-Import-Module .\Output\temp\PoshCodex\<version_number>\PoshCodex.psd1
+Import-Module .\Output\PoshCodex\<version_number>\PoshCodex.psd1
 
-# Now the module can be used.
+# Now the module can be used in the current powershell session.
+# See above step for auto-import on every powershell session.
 ```
 
 ## Configuration of the OpenAI Codex API Key
@@ -117,17 +119,13 @@ $env:OPENAI_API_KEY="your_api_key"
 
 ## Usage
 
-TODO - Add usage instructions
+Just type a comment or partial code snippet, and hit the keybind!  
+
+See the GIF above for a demonstration.
 
 ```powershell
-# Import the module first to activate the keybind (can be done in your $PROFILE that runs on every shell start)
-Import-Module PoshCodex
-
-# Now you can use the keybinds for completion
-# If the keybind is Ctrl+Alt+X (default), then:
-
 # type some comment that describes what you want to do, eg:
-"# install the 'scoop' module" # minus the quotes
+"# install the 'scoop' module" # with/without any of the quotes
 
 # Just hit Ctrl+Alt+X (or your own keybind if changed) and the AI will write the corresponding code for you.
 ```
@@ -149,3 +147,4 @@ Import-Module PoshCodex
 - [ ] Add GIF of working demo in terminal
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
+- [ ] Make a website playground that lets users try this out live using my API key
