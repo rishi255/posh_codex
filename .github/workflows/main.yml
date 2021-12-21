@@ -96,7 +96,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: module-artifact # Naming the powershell module artifact
-          path: ./{{ env.MODULE_NAME }}/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
+          path: ./${{ env.MODULE_NAME }}/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
 
   # 2nd Job -- Releasing the module, skip job if should_skip is true
   release:
