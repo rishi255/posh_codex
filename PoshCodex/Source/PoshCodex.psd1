@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.13'
+ModuleVersion = '0.2.14'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -116,7 +116,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @('PSWriteColor','PSReadLine','PSReadLine.PowerShell')
+        ExternalModuleDependencies = @('PSReadLine')
 
     } # End of PSData hashtable
 
