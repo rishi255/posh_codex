@@ -207,7 +207,6 @@ task Build -if($Configuration -eq "Release"){
         else {
             Write-Host "Version number: v$ModuleVersion"
             Write-Host "NOT Bumping Version as BumpVersion switch not passed!"
-            Write-Host "This probably means the build script was called from the develop branch: version is only bumped in the master branch"
         }
     }
 

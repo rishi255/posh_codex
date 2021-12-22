@@ -39,7 +39,7 @@ jobs:
         id: psmodulecache
         uses: potatoqualitee/psmodulecache@v1
         with:
-          modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSWriteColor, PSReadLine
+          modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSReadLine
 
         # Setting up the powershell module cache
       - name: Setup PowerShell module cache
@@ -88,7 +88,15 @@ jobs:
           git config --global user.email 'rishikeshrachchh@gmail.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add .
-          git diff-index --quiet HEAD || git commit -am "Bump to v${{ env.MODULE_VERSION }}"
+
+          if [ $(git status --porcelain | wc -l) -ge 0 ]; then 
+          echo "Working tree not clean! Displaying git status:"
+          git status
+          echo "Committing new version bump to v${{ env.MODULE_VERSION }}!"
+          git commit -am "Bump to v${{ env.MODULE_VERSION }}"
+          git push
+          fi
+
           echo "Getting module number from GitHub env variables: "
           echo "MODULE_VERSION = ${{ env.MODULE_VERSION }}"
 
