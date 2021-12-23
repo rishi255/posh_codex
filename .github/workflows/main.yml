@@ -96,6 +96,7 @@ jobs:
           git status
           echo "Committing new version bump to v${{ env.MODULE_VERSION }}!"
           git commit -am "Bump to v${{ env.MODULE_VERSION }}"
+          git tag -a v${{ env.MODULE_VERSION }} -m "v${{ env.MODULE_VERSION }}"
           git push
           fi
 
@@ -144,3 +145,17 @@ jobs:
         with:
           modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
           NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
+
+      # Since this only runs on the main branch, it means that a tag was created right after commit in the build step.
+      # That tag is published as a release on GitHub.
+      # Release name defaults to tag name.
+      - name: GitHub Release
+        uses: softprops/action-gh-release@master
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.psm1
+            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.psd1
+            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.nuspec
+            ./Artifact/${{ env.MODULE_NAME }}/en-US/about_PoshCodex.help.txt
+            ./Artifact/${{ env.MODULE_NAME }}/en-US/PoshCodex-help.xml

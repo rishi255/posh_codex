@@ -73,31 +73,32 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 
 ## How to Install
 
-### 1. Through PowerShellGallery (recommended)
+### 1. Through PowerShellGallery (recommended, cross-platform)
 
 ```powershell
+# to install or update to the latest version
 Install-Module -Name PoshCodex -Force
 
-# To check if it's installed properly:
+# to check if it's installed properly:
 Get-Module -Name PoshCodex # should display the Invoke-Completion command
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 2. Through Scoop
+### 2. Through Scoop (Windows only)
 
-You can get Scoop from [here](https://scoop.sh/).
+Scoop is an easy-to-use command-line installer for Windows apps. You can get Scoop from [here](https://scoop.sh/).
 
 ```powershell
-scoop bucket add https://github.com/rishi255/posh_codex
+scoop bucket add poshcodex_bucket https://github.com/rishi255/posh_codex
 scoop install PoshCodex # not case sensitive
 
 # to update the module later:
 scoop update PoshCodex
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-echo "`nImport-Module PoshCodex" >> $PROFILE
+echo "`nImport-Module $env:SCOOP/modules/PoshCodex" >> $PROFILE
 ```
 
 ### 3. By building the module yourself
@@ -105,14 +106,14 @@ echo "`nImport-Module PoshCodex" >> $PROFILE
 ```powershell
 # Clone the repository
 git clone https://github.com/rishi255/posh_codex
-cd .\posh_codex\PoshCodex\
+cd ./posh_codex/PoshCodex/
 
 # Install Invoke-Build and build the module
 Install-Module InvokeBuild -Force -RequiredVersion 3.2.1
 Invoke-Build -File build.ps1 -Configuration 'Release'
 
 # Now import the built module
-Import-Module .\Output\PoshCodex\<version_number>\PoshCodex.psd1
+Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 
 # Now the module can be used in the current powershell session.
 # See above step for auto-import on every powershell session.
