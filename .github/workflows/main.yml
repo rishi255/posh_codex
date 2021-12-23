@@ -96,12 +96,20 @@ jobs:
           git status
           echo "Committing new version bump to v${{ env.MODULE_VERSION }}!"
           git commit -am "Bump to v${{ env.MODULE_VERSION }}"
-          git tag -a v${{ env.MODULE_VERSION }} -m "v${{ env.MODULE_VERSION }}"
           git push
           fi
 
           echo "Getting module number from GitHub env variables: "
           echo "MODULE_VERSION = ${{ env.MODULE_VERSION }}"
+
+        # DON'T PUSH THE TAG IF IT'S DEVELOP BRANCH.
+      - name: Push tag
+        if: github.ref == 'refs/heads/main'
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ env.MODULE_VERSION }}
 
         # Uploads the build powershell module as an artifact
       - name: Upload Build Artifact
@@ -151,7 +159,6 @@ jobs:
       # Release name defaults to tag name.
       - name: GitHub Release
         uses: softprops/action-gh-release@master
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.psm1
