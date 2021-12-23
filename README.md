@@ -85,7 +85,19 @@ Get-Module -Name PoshCodex # should display the Invoke-Completion command
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 2. By building the module yourself
+### 2. Through Scoop
+
+You can get Scoop from [here](https://scoop.sh/).
+
+```powershell
+scoop bucket add https://github.com/rishi255/posh_codex
+scoop install PoshCodex # not case sensitive
+
+# to update the module later:
+scoop update PoshCodex
+```
+
+### 3. By building the module yourself
 
 ```powershell
 # Clone the repository
@@ -119,7 +131,7 @@ $env:OPENAI_API_KEY="your_api_key"
 
 ## Usage
 
-Just type a comment or partial code snippet, and hit the keybind!  
+Just type a comment or partial code snippet, and hit the keybind!
 
 See the GIF above for a demonstration.
 
@@ -140,7 +152,7 @@ See the GIF above for a demonstration.
 - [x] Add installation instructions to README.md
 - [x] Integrate with GitHub Actions to auto-publish new versions
 - [x] Make required modules auto-install when this module is installed
-- [ ] Publish plugin for installation through Scoop
+- [x] Publish plugin for installation through Scoop
 - [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Invoke-Completion.md`
 - [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
 - [ ] Test plugin robustness in PowerShell using Codex API key

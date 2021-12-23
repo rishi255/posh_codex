@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "PowerShell module to manage GitHub through its REST API.",
   "homepage": "https://github.com/rishi255/posh_codex",
   "license": "MIT",
@@ -11,9 +11,9 @@
     "regex": "PoshCodex\\s+([\\d.]+)"
   },
   "autoupdate": {
-    "url": "http://github.com/rishi255/posh_codex/archive/main.zip#/posh-codex-v$version",
+    "url": "http://github.com/rishi255/posh_codex/archive/main.zip#/posh-codex.zip",
     "extract_dir": "posh_codex-main"
   },
-  "url": "http://github.com/rishi255/posh_codex/archive/main.zip#/posh-codex-v$version",
+  "url": "http://github.com/rishi255/posh_codex/archive/main.zip#/posh-codex.zip",
   "extract_dir": "posh_codex-main"
 }
