@@ -109,8 +109,7 @@ jobs:
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_TAG: ${{ env.MODULE_VERSION }}
-          WITH_V: true
+          CUSTOM_TAG: v${{ env.MODULE_VERSION }}
 
       - name: ⚙️ Check created tag
         id: check_tagged
@@ -150,6 +149,7 @@ jobs:
           Write-Host $Env:GITHUB_REF
           $ModuleName="PoshCodex"
           echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "needs.build.outputs.tagged = ${{ needs.build.outputs.tagged }}"
         shell: pwsh
 
         # Publishing the module to powershell gallery
