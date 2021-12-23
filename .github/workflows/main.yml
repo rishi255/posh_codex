@@ -158,11 +158,8 @@ jobs:
       # That tag is published as a release on GitHub.
       # Release name defaults to tag name.
       - name: GitHub Release
-        uses: softprops/action-gh-release@master
+        uses: ncipollo/release-action@v1
         with:
-          files: |
-            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.psm1
-            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.psd1
-            ./Artifact/${{ env.MODULE_NAME }}/PoshCodex.nuspec
-            ./Artifact/${{ env.MODULE_NAME }}/en-US/about_PoshCodex.help.txt
-            ./Artifact/${{ env.MODULE_NAME }}/en-US/PoshCodex-help.xml
+          artifacts: "./Artifact/${{ env.MODULE_NAME }}/**"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ needs.build.outputs.new_tag }}
