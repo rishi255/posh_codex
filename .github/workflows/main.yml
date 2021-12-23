@@ -166,7 +166,7 @@ jobs:
       # That tag is published as a release on GitHub.
       # Release name defaults to tag name.
       - name: 🛎️ Create GitHub Release
-        if: ${{ needs.build.outputs.tagged == 'true' }}
+        if: ${{ needs.build.outputs.tagged == true }}
         uses: ncipollo/release-action@v1
         with:
           artifacts: "./Artifact/${{ env.MODULE_NAME }}/**"
