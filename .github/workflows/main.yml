@@ -60,24 +60,26 @@ jobs:
         #! Hardcoded module name here and stored as env variable, used by this job only. This step is duplicated in the next job.
         # Running a powershell command to save the module name as an Environment Variable
       - name: Set Module Name
+        shell: pwsh
         run: |
           Write-Host $Env:GITHUB_REF
           $ModuleName="PoshCodex"
           echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
-        shell: pwsh
 
         # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
         # WITH BUMP VERSION, FOR BOTH BRANCHES.
         # Version is bumped regardless of branch, but publish to gallery will only happen if the commit reaches the main branch.
         # And if it does reach the main branch, it means builds have passed anyway.
         # So this workflow should be fine.
-      - name: Invoke Build and set ModuleVersion environment variable
+      - name: Invoke Build and set ModuleVersion environment variable and bump versions
         shell: pwsh
         run: |
-          pwsh -command "Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose"
+          Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose
           $moduleversion=(Test-ModuleManifest -Path ".\${{ env.MODULE_NAME }}\Source\${{ env.MODULE_NAME }}.psd1").Version.toString()
           echo "Setting Module version environment variable: $moduleversion"
           echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "Bumping Scoop manifest version to $moduleversion"
+          (Get-Content .\poshcodex.json) -replace '"version": "([0-9.]{6,})"', "`"version`": `"$moduleversion`"" | Out-File .\poshcodex.json
 
         # Pushing the changes from InvokeBuild to the main branch
         # DON'T COMMIT THE VERSION BUMP IF IT'S DEVELOP BRANCH.

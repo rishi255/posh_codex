@@ -22,6 +22,5 @@ function Invoke-OpenAI-Api {
         -Token  ( ConvertTo-SecureString -String $env:OPENAI_API_KEY -AsPlainText) `
         -Method POST
 
-    Write-Host "##hey##"
     return $json_output
 }
