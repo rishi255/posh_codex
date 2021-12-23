@@ -79,7 +79,7 @@ jobs:
           echo "Setting Module version environment variable: $moduleversion"
           echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
           echo "Bumping Scoop manifest version to $moduleversion"
-          (Get-Content .\poshcodex.json) -replace '"version": "([0-9.]{6,})"', "`"version`": `"$moduleversion`"" | Out-File .\poshcodex.json
+          (Get-Content .\poshcodex.json) -replace '"version": "([0-9.]{5,})"', "`"version`": `"$moduleversion`"" | Out-File .\poshcodex.json
 
         # Pushing the changes from InvokeBuild to the main branch
         # DON'T COMMIT THE VERSION BUMP IF IT'S DEVELOP BRANCH.
