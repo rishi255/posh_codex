@@ -1,5 +1,5 @@
 {
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "PowerShell module to manage GitHub through its REST API.",
   "homepage": "https://github.com/rishi255/posh_codex",
   "license": "MIT",
