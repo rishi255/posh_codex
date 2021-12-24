@@ -35,14 +35,14 @@ jobs:
       - uses: actions/checkout@main
 
         # Setting up required powershell modules
-      - name: Set required PowerShell modules
+      - name: 🔧 Set required PowerShell modules
         id: psmodulecache
         uses: potatoqualitee/psmodulecache@v1
         with:
           modules-to-cache: Pester, PSScriptAnalyzer, InvokeBuild, platyPS, PSReadLine
 
         # Setting up the powershell module cache
-      - name: Setup PowerShell module cache
+      - name: 🔧 Setup PowerShell module cache
         id: cacher
         uses: actions/cache@v2
         with:
@@ -50,28 +50,30 @@ jobs:
           key: ${{ steps.psmodulecache.outputs.keygen }}
 
         # Installing the required powershell module, if not cached
-      - name: Install required PowerShell modules
+      - name: 🔧 Install required PowerShell modules
         if: steps.cacher.outputs.cache-hit != 'true'
         shell: pwsh
         run: |
           Set-PSRepository PSGallery -InstallationPolicy Trusted
           Install-Module ${{ steps.psmodulecache.outputs.needed }} -ErrorAction Stop
 
-        #! Hardcoded module name here and stored as env variable, used by this job only. This step is duplicated in the next job.
+        #! Hardcoded module name here and stored as env variable, used by this job only.
         # Running a powershell command to save the module name as an Environment Variable
-      - name: Set Module Name
+      - name: 🔧 Set Module Name
+        id: set_module_name
         shell: pwsh
         run: |
           Write-Host $Env:GITHUB_REF
           $ModuleName="PoshCodex"
           echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+          echo "::set-output name=module_name::${{ env.MODULE_NAME }}"
 
         # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
         # WITH BUMP VERSION, FOR BOTH BRANCHES.
         # Version is bumped regardless of branch, but publish to gallery will only happen if the commit reaches the main branch.
         # And if it does reach the main branch, it means builds have passed anyway.
         # So this workflow should be fine.
-      - name: Invoke Build and set ModuleVersion environment variable and bump versions
+      - name: ⚒️ Invoke Build, bump versions and set env.MODULE_VERSION variable
         shell: pwsh
         run: |
           Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose
@@ -83,7 +85,7 @@ jobs:
 
         # Pushing the changes from InvokeBuild to the main branch
         # DON'T COMMIT THE VERSION BUMP IF IT'S DEVELOP BRANCH.
-      - name: Push changes to Git Repository
+      - name: 📌 Push changes to Git Repository
         if: github.ref == 'refs/heads/main'
         run: |
           git config --global user.name 'rishi255'
@@ -119,7 +121,7 @@ jobs:
           echo "tagged = ${{ (steps.tag.outputs.new_tag == steps.tag.outputs.tag) }}"
 
         # Uploads the build powershell module as an artifact
-      - name: Upload Build Artifact
+      - name: 📌 Upload Build Artifact
         uses: actions/upload-artifact@v2
         with:
           name: module-artifact # Naming the powershell module artifact
@@ -128,6 +130,7 @@ jobs:
     outputs:
       tagged: ${{ steps.check_tagged.outputs.tagged }}
       tag: ${{ steps.tag.outputs.tag }}
+      module_name: ${{ steps.set_module_name.outputs.module_name }}
 
   # 2nd Job -- Releasing the module, skip job if should_skip is true
   release:
@@ -141,30 +144,23 @@ jobs:
       - uses: actions/checkout@main
 
         # Downloads the powershell module build artifact made in the build step
-      - name: Download build artifact
+      - name: 📩 Download build artifact
         uses: actions/download-artifact@v2
         with:
           name: module-artifact # Name of the powershell module artifact
           path: ./Artifact/ # Downloads the module to the path ./Artifact/
 
-        #! Hardcoded module name here as can't use env variable from previous job without complicating code
-        # Running a powershell command to save the module name as an Environment Variable
-      - name: Set Module Name
-        run: |
-          Write-Host $Env:GITHUB_REF
-          $ModuleName="PoshCodex"
-          echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
-          echo "needs.build.outputs.tagged = ${{ needs.build.outputs.tagged }}"
-        shell: pwsh
-
         # Publishing the module to powershell gallery
-      - name: Publish to Powershell Gallery
-        # You may pin to the exact commit or the version.
-        # uses: pcgeek86/publish-powershell-module-action@2a7837ce0746ea58c40574d8d6cbc6c44238edb7
+      - name: ⬆️ Publish to Powershell Gallery
         uses: pcgeek86/publish-powershell-module-action@v20
         with:
-          modulePath: ./Artifact/${{ env.MODULE_NAME }} # Using the environment variable to find the module name
+          modulePath: ./Artifact/${{ needs.build.outputs.module_name }}
           NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
+
+      - name: ⛓️ Make tarball for GitHub Release
+        run: |
+          echo "needs.build.outputs.module_name = ${{ needs.build.outputs.module_name }}"
+          tar -cvf PoshCodex.tar ./Artifact/${{ needs.build.outputs.module_name }}/
 
       # Since this only runs on the main branch, it means that a tag was created right after commit in the build step.
       # That tag is published as a release on GitHub.
@@ -173,6 +169,6 @@ jobs:
         if: ${{ needs.build.outputs.tagged == 'true' }}
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "./Artifact/${{ env.MODULE_NAME }}/**"
+          artifacts: "PoshCodex.tar"
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ needs.build.outputs.tag }}
