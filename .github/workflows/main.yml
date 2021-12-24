@@ -150,7 +150,7 @@ jobs:
 
         #! Hardcoded module name here as can't use env variable from previous job without complicating code
         # Running a powershell command to save the module name as an Environment Variable
-      - name: Set Module Name
+      - name: 🔧 Set Module Name
         run: |
           Write-Host $Env:GITHUB_REF
           $ModuleName="PoshCodex"
@@ -166,9 +166,12 @@ jobs:
           NuGetApiKey: ${{ secrets.NUGETAPIKEY }} # Using the NugetAPI key set in GitHub Secrets
 
       - name: ⛓️ Make tarball and zipball for GitHub Release
+        working-directory: ./Artifact/${{ env.MODULE_NAME }}/${{ needs.build.outputs.tag }}
         run: |
-          tar -cvf PoshCodex.tar ./Artifact/${{ env.MODULE_NAME }}/
-          zip -r PoshCodex.zip ./Artifact/${{ env.MODULE_NAME }}/
+          tar -cvf PoshCodex.tar .
+          zip -r PoshCodex.zip .
+          mv PoshCodex.tar ../../../PoshCodex.tar
+          mv PoshCodex.zip ../../../PoshCodex.zip
 
       # Since this only runs on the main branch, it means that a tag was created right after commit in the build step.
       # That tag is published as a release on GitHub.
