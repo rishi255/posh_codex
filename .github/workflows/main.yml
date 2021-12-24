@@ -127,6 +127,8 @@ jobs:
 
     outputs:
       tagged: ${{ steps.check_tagged.outputs.tagged }}
+      tag: ${{ steps.tag.outputs.tag }}
+
   # 2nd Job -- Releasing the module, skip job if should_skip is true
   release:
     needs: [pre_job, build]
