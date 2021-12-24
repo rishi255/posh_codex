@@ -125,6 +125,8 @@ jobs:
           name: module-artifact # Naming the powershell module artifact
           path: ./${{ env.MODULE_NAME }}/Output/ # Saving the powershell module artifact to the path ./PoshCodex/Output/
 
+    outputs:
+      tagged: ${{ steps.check_tagged.outputs.tagged }}
   # 2nd Job -- Releasing the module, skip job if should_skip is true
   release:
     needs: [pre_job, build]
@@ -166,7 +168,7 @@ jobs:
       # That tag is published as a release on GitHub.
       # Release name defaults to tag name.
       - name: 🛎️ Create GitHub Release
-        if: ${{ needs.build.outputs.tagged == true }}
+        if: ${{ needs.build.outputs.tagged == 'true' }}
         uses: ncipollo/release-action@v1
         with:
           artifacts: "./Artifact/${{ env.MODULE_NAME }}/**"
