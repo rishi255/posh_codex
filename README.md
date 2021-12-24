@@ -98,7 +98,7 @@ scoop install PoshCodex # not case sensitive
 scoop update PoshCodex
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-echo "`nImport-Module $env:SCOOP/modules/PoshCodex" >> $PROFILE
+echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
 ### 3. By building the module yourself
