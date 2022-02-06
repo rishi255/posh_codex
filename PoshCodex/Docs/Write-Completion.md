@@ -15,9 +15,7 @@ This function is called when the keybind is hit, and should only be called by hi
 
 Check help for the module to learn more.
 
-```powershell
-Get-Help PoshCodex
-```
+PS> Get-Help PoshCodex
 
 ## INPUTS
 

@@ -15,9 +15,7 @@ This function is used to change the keybind that calls the Write-Completion func
 
 Check help for the module to learn more.
 
-```powershell
-Get-Help PoshCodex
-```
+PS> Get-Help PoshCodex
 
 ## INPUTS
 
@@ -29,6 +27,6 @@ Get-Help PoshCodex
 
 ## EXAMPLES
 
-Set-CompletionKeybind 'Shift+y'
-Set-CompletionKeybind 'Tab'
-Set-CompletionKeybind 'Ctrl+K,Ctrl+E'
+PS> Set-CompletionKeybind 'Shift+y'
+PS> Set-CompletionKeybind 'Tab'
+PS> Set-CompletionKeybind 'Ctrl+K,Ctrl+E'
