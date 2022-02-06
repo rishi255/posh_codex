@@ -10,38 +10,38 @@
 <div align="center">
   <a href="https://www.powershellgallery.com/packages/PoshCodex">
     <img
-        src="https://img.shields.io/powershellgallery/v/PoshCodex.svg?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+        src="https://img.shields.io/powershellgallery/v/PoshCodex?colorA=2c2837&style=for-the-badge"
         alt="PowerShell package latest version"
     />
   </a>
   <a href="https://www.powershellgallery.com/packages/PoshCodex">
     <img
-      src="https://img.shields.io/powershellgallery/dt/PoshCodex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      src="https://img.shields.io/powershellgallery/dt/PoshCodex?colorA=2c2837&style=for-the-badge"
       alt="PowerShell package download stats"
     />
   </a>
   <a href="https://github.com/rishi255/posh_codex/stargazers">
     <img
-      src="https://img.shields.io/github/stars/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      src="https://img.shields.io/github/stars/rishi255/posh_codex?colorA=2c2837&style=for-the-badge"
       alt="Repository's stars"
     />
   </a>
   <br />
   <a href="https://github.com/rishi255/posh_codex/issues">
     <img
-      src="https://img.shields.io/github/issues-raw/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      src="https://img.shields.io/github/issues-raw/rishi255/posh_codex?colorA=2c2837&style=for-the-badge"
       alt="Issues"
     />
   </a>
   <a href="https://github.com/rishi255/posh_codex/blob/main/LICENSE">
     <img
-      src="https://img.shields.io/github/license/rishi255/posh_codex?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      src="https://img.shields.io/github/license/rishi255/posh_codex?colorA=2c2837&style=for-the-badge"
       alt="License"
     />
   </a>
   <a href="https://github.com/rishi255/posh_codex/commits/main">
     <img
-      src="https://img.shields.io/github/last-commit/rishi255/posh_codex/main?colorA=2c2837&style=for-the-badge&logo=starship style=flat-square"
+      src="https://img.shields.io/github/last-commit/rishi255/posh_codex/main?colorA=2c2837&style=for-the-badge"
       alt="Latest commit"
     />
   </a>
