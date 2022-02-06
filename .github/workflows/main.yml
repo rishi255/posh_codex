@@ -183,7 +183,7 @@ jobs:
         working-directory: ./Artifact/${{ env.MODULE_NAME }}/${{ needs.build.outputs.tag_without_v }}
         run: |
           tar -cvf PoshCodex.tar .
-          zip -r PoshCodex.zip .
+          zip -r PoshCodex.zip . -x *.tar
           mv PoshCodex.tar ../../../PoshCodex.tar
           mv PoshCodex.zip ../../../PoshCodex.zip
 
