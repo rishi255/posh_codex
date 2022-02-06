@@ -80,7 +80,7 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 Install-Module -Name PoshCodex -Force
 
 # to check if it's installed properly:
-Get-Module -Name PoshCodex # should display the Invoke-Completion command
+Get-Module -Name PoshCodex # should display the Write-Completion command
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
 echo "`nImport-Module PoshCodex" >> $PROFILE
@@ -123,8 +123,8 @@ Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 
 This module requires access to the OpenAI Codex API for best results. You can join the waitlist for a Codex API key by following the instructions [here](https://openai.com/blog/openai-codex/).
 
-Until you get a Codex API key, you can use the [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
-**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are not even close to the ones from the Codex API._**
+Until you get a Codex API key, you can use the generic [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
+**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are nowhere as good as the ones from the Codex API._**
 
 The module expects an environment variable called OPENAI_API_KEY to be set in the environment.
 You can set it with the following command:
@@ -143,8 +143,23 @@ See the GIF above for a demonstration.
 # type some comment that describes what you want to do, eg:
 "# install the 'scoop' module" # with/without any of the quotes
 
-# Just hit Ctrl+Alt+X (or your own keybind if changed) and the AI will write the corresponding code for you.
+# Just hit Ctrl+Alt+x (or your own keybind if changed) and the AI will write the corresponding code for you.
 ```
+
+## Changing the keybind
+
+The module exposes a function to change the keybind to whatever you want to use.
+Default keybind is `Ctrl+Alt+x`, and can be changed like this:
+
+```powershell
+Set-CompletionKeybind 'Shift+y'
+Set-CompletionKeybind 'Tab'
+
+# to set keybind as combination of two chords
+Set-CompletionKeybind 'Ctrl+K,Ctrl+E'
+```
+
+List of all supported keys that can be separated by + is given [here](https://docs.microsoft.com/en-us/dotnet/api/system.consolekey?view=net-6.0#fields).
 
 ## TODO checklist
 
@@ -157,8 +172,8 @@ See the GIF above for a demonstration.
 - [x] Integrate with GitHub Actions to auto-publish new versions
 - [x] Make required modules auto-install when this module is installed
 - [x] Publish plugin for installation through Scoop
-- [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Invoke-Completion.md`
-- [ ] Add a way to change the hotkey for completion - currently it's `Ctrl+Alt+x`
+- [x] Add a way to change the hotkey for completion - default is `Ctrl+Alt+x`
+- [x] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
 - [ ] Test plugin robustness in PowerShell using Codex API key
 - [ ] Add GIF of working demo in terminal
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
