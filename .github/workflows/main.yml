@@ -67,7 +67,7 @@ jobs:
           $ModuleName="PoshCodex"
           echo "MODULE_NAME=$ModuleName" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
-        # Running the InvokeBuild Module Invoke-Build command with "Release configuration"
+        # Running the InvokeBuild Module Invoke-Build command
         # WITH BUMP VERSION, FOR BOTH BRANCHES.
         # Version is bumped regardless of branch, but publish to gallery will only happen if the commit reaches the main branch.
         # And if it does reach the main branch, it means builds have passed anyway.
@@ -75,7 +75,7 @@ jobs:
       - name: ⚒️ Invoke Build, bump versions and set env.MODULE_VERSION variable
         shell: pwsh
         run: |
-          Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -Configuration 'Release' -BumpVersion -Verbose
+          Invoke-Build -File ./${{ env.MODULE_NAME }}/build.ps1 -BumpVersion -Verbose
           $moduleversion=(Test-ModuleManifest -Path ".\${{ env.MODULE_NAME }}\Source\${{ env.MODULE_NAME }}.psd1").Version.toString()
           echo "Setting Module version environment variable: $moduleversion"
           echo "MODULE_VERSION=$moduleversion" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append

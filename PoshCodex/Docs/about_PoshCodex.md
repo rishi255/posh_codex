@@ -2,21 +2,25 @@
 
 ## Description
 
-This is a powershell plugin that enables you to use OpenAI's powerful Codex AI in the command line. OpenAI Codex is the AI that also powers GitHub Copilot.
-To use this plugin you need to get access to OpenAI's [Codex API](https://openai.com/blog/openai-codex/).
+This is a PowerShell plugin that enables you to plug and play any AI code completion model in the command line, to improve efficiency, reduce errors and optimize your workflow.
 
-## Configuration of the OpenAI Codex API Key
+It is completely free, as it can be used with any open-source model from Ollama, like [CodeLlama](https://ollama.com/library/codellama), or the powerful [Deepseek-Coder-v2](https://ollama.com/library/deepseek-coder-v2:16b) (default for this module).
 
-This module requires access to the OpenAI Codex API for best results. You can join the waitlist for a Codex API key by following the instructions [here](https://openai.com/blog/openai-codex/).
+Forked from the impressive [zsh version of this extension by Tom Doerr](https://github.com/tom-doerr/zsh_codex).
 
-Until you get a Codex API key, you can use the generic [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
-**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are nowhere as good as the ones from the Codex API._**
-
-The module expects an environment variable called OPENAI_API_KEY to be set in the environment.
-You can set it with the following command:
+## Configuration of the Ollama Model
 
 ```powershell
-$env:OPENAI_API_KEY="your_api_key"
+# install ollama
+scoop bucket add versions
+scoop install versions/innounp-unicode
+scoop install ollama
+
+# pull the base model
+ollama pull deepseek-coder-v2:16b
+
+# create new model tailored for our needs using Modelfile.txt
+ollama create posh_codex_model -f .\Modelfile.txt
 ```
 
 ## Usage

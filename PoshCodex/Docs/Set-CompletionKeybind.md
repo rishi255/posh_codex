@@ -14,7 +14,7 @@ This function is used to change the keybind that calls the Write-Completion func
 ## SYNTAX
 
 ```
-Set-CompletionKeybind [[-keybind] <Object>] [<CommonParameters>]
+Set-CompletionKeybind [[-keybind] <Object>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,6 +56,22 @@ Aliases:
 
 Required: False
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

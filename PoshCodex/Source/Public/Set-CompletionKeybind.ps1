@@ -1,6 +1,6 @@
 #Requires -Modules PSReadLine
 
-$defaultKeybind = 'Ctrl+Alt+x';
+$defaultKeybind = 'Ctrl+Shift+X';
 
 function Set-CompletionKeybind {
 	# Add cmdletBinding to the parameter list
@@ -10,17 +10,17 @@ function Set-CompletionKeybind {
 	)
 
 	# unset current handler for Write-Completion if it exists
-	Remove-PSReadLineKeyHandler -Chord $global:previousKeybind
-	Write-Host "Previous keybind removed: $global:previousKeybind"
+	Remove-PSReadLineKeyHandler -Chord $global:AutocompleteKeybind
+	Write-Host "Previous keybind removed: $global:AutocompleteKeybind"
 
 	Set-PSReadLineKeyHandler -Chord $keybind `
 		-BriefDescription Write-Completion `
 		-LongDescription 'Autocomplete the stuff' `
 		-ScriptBlock { Write-Completion }
-	
+
 	Write-Host "New keybind set: $keybind"
-	$global:previousKeybind = $keybind
+	$global:AutocompleteKeybind = $keybind
 }
 
-$global:previousKeybind = $defaultKeybind;
+$global:AutocompleteKeybind = $defaultKeybind;
 Set-CompletionKeybind $defaultKeybind;
