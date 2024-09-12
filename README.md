@@ -2,7 +2,7 @@
 <h1 align="center">⌨️ 🦾 PowerShell Codex</h1>
 
 <div align="center">
-  AI in the command line. Powered by the AI behind GitHub Copilot.
+  Brings the power of AI code completion to the command line.
 </div>
 
 <br/>
@@ -66,8 +66,9 @@
 
 ## What is it?
 
-This is a powershell plugin that enables you to use OpenAI's powerful Codex AI in the command line. OpenAI Codex is the AI that also powers GitHub Copilot.
-To use this plugin you need to get access to OpenAI's [Codex API](https://openai.com/blog/openai-codex/).
+This is a PowerShell plugin that enables you to plug and play any AI code completion model in the command line, to improve efficiency, reduce errors and optimize your workflow.
+
+It is completely free, as it can be used with any open-source model from Ollama, like [CodeLlama](https://ollama.com/library/codellama), or the powerful [Deepseek-Coder-v2](https://ollama.com/library/deepseek-coder-v2:16b) (default for this module).
 
 Forked from the impressive [zsh version of this extension by Tom Doerr](https://github.com/tom-doerr/zsh_codex).
 
@@ -109,7 +110,7 @@ git clone https://github.com/rishi255/posh_codex
 cd ./posh_codex/PoshCodex/
 
 # Install Invoke-Build and build the module
-Install-Module InvokeBuild -Force -RequiredVersion 3.2.1
+Install-Module InvokeBuild -Force
 Invoke-Build -File build.ps1 -Configuration 'Release'
 
 # Now import the built module
@@ -119,18 +120,27 @@ Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 # See above step for auto-import on every powershell session.
 ```
 
-## Configuration of the OpenAI Codex API Key
+## Configuration of the Ollama Model
 
-This module requires access to the OpenAI Codex API for best results. You can join the waitlist for a Codex API key by following the instructions [here](https://openai.com/blog/openai-codex/).
-
-Until you get a Codex API key, you can use the generic [GPT-3 OpenAI API key](https://beta.openai.com/docs/developer-quickstart/your-api-keys) by signing up on the OpenAI website.  
-**_However, the base GPT-3 model is not tailored for code completions and hence the suggestions are nowhere as good as the ones from the Codex API._**
-
-The module expects an environment variable called OPENAI_API_KEY to be set in the environment.
-You can set it with the following command:
+**Note:** The AI completion will run locally on your machine, and the below commands will download a large model file.
 
 ```powershell
-$env:OPENAI_API_KEY="your_api_key"
+# install ollama
+scoop bucket add versions
+scoop install versions/innounp-unicode
+scoop install ollama
+
+# pull the base model
+ollama pull deepseek-coder-v2:16b # around 8 GB
+
+# if you find the above to be too slow, you can use a smaller version of the base model
+# (note that results might not be as good as larger models)
+ollama pull deepseek-coder:6.7b # around 4 GB
+
+# NOTE: If you choose to use any model other than
+
+# create new model tailored for our needs using Modelfile.txt
+ollama create posh_codex_model -f .\Modelfile.txt
 ```
 
 ## Usage
@@ -173,8 +183,9 @@ List of all supported keys that can be separated by + is given [here](https://do
 - [x] Make required modules auto-install when this module is installed
 - [x] Publish plugin for installation through Scoop
 - [x] Add a way to change the hotkey for completion - default is `Ctrl+Alt+x`
-- [x] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
-- [ ] Test plugin robustness in PowerShell using Codex API key
+- [ ] Add a way to change the hotkey for completion by reading key input, instead of user having to call function`
+- [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
+- [ ] Test plugin robustness in PowerShell
 - [ ] Add GIF of working demo in terminal
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
