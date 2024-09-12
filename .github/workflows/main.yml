@@ -157,7 +157,7 @@ jobs:
 
         # Downloads the powershell module build artifact made in the build step
       - name: 📩 Download build artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: module-artifact # Name of the powershell module artifact
           path: ./Artifact/ # Downloads the module to the path ./Artifact/
