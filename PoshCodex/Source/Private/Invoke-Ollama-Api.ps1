@@ -8,13 +8,13 @@ function Invoke-Ollama-Api {
 	# [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
 
 	$data = @{
-		model  = 'posh_codex_model'
+		model  = "$env:OLLAMA_MODEL"
 		prompt = $BUFFER
 		stream = $false
 	}
 
 	$json_output = Invoke-RestMethod -Method POST `
-		-Uri 'http://localhost:11434/api/generate' `
+		-Uri "$env:OLLAMA_HOST/api/generate" `
 		-Body ($data | ConvertTo-Json) `
 		-ContentType 'application/json; charset=utf-8';
 
