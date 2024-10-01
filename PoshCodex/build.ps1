@@ -180,13 +180,24 @@ task Build {
 		}
 	}
 
+	Write-Verbose -Message "Appending contents of all ps1 files under 'Scripts' to the end of the psm1 file."
+	try {
+		foreach ($script in (Get-ChildItem -File -Recurse -LiteralPath '.\Source\Scripts' -Filter *.ps1)) {
+			$content = Get-Content -Path $script
+			Add-Content -Path $ModuleFile -Value $content
+		}
+	}
+	catch {
+		Write-Warning -Message 'Failed adding the content of init scripts to psm1 file.'
+	}
+
 	# Write-Verbose -Message 'Updating Module Manifest with root module'
 	try {
 		# Write-Verbose -Message 'Updating the Module Manifest'
 		Update-ModuleManifest -Path ".\Output\$($ModuleName)\$($ModuleVersion)\$($ModuleName).psd1" -RootModule "$($ModuleName).psm1"
 	}
 	catch {
-		Write-Warning -Message 'Failed appinding the rootmodule to the Module Manifest'
+		Write-Warning -Message 'Failed appending the rootmodule to the Module Manifest'
 	}
 
 	# Write-Verbose -Message 'Compiling Help files'
@@ -236,6 +247,27 @@ task Clean {
 	if (Test-Path '.\Output\temp') {
 		# Write-Verbose -Message 'Removing temp folders'
 		Remove-Item '.\Output\temp' -Recurse -Force
+	}
+}
+
+# Kept just for reference, this task is never used. 
+# The actual publish action is only done through Github Actions.
+task Publish {
+
+	Write-Verbose -Message 'Publishing Module to PowerShell gallery'
+	Write-Verbose -Message "Importing Module .\Output\$($ModuleName)\$ModuleVersion\$($ModuleName).psm1"
+	Import-Module ".\Output\$($ModuleName)\$ModuleVersion\$($ModuleName).psm1"
+	If ((Get-Module -Name $ModuleName) -and ($env:NUGET_API_KEY)) {
+		try {
+			Write-Verbose -Message "Publishing Module: $($ModuleName)"
+			Publish-Module -Name $ModuleName -NuGetApiKey $env:NUGET_API_KEY
+		}
+		catch {
+			throw "Failed publishing module $($ModuleName) to PowerShell Gallery"
+		}
+	}
+	else {
+		Write-Warning -Message "Something went wrong, couldn't publish module to PSGallery. Did you provide a NugetKey?."
 	}
 }
 
