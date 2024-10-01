@@ -68,7 +68,7 @@
 
 This is a PowerShell plugin that enables you to plug and play any AI code completion model in the command line, to improve efficiency, reduce errors and optimize your workflow.
 
-It is completely free, as it can be used with any open-source model from Ollama, like [CodeLlama](https://ollama.com/library/codellama), or the powerful [Deepseek-Coder-v2](https://ollama.com/library/deepseek-coder-v2:16b) (default for this module).
+It is completely free, as it can be used with any open-source model from Ollama, like [CodeLlama](https://ollama.com/library/codellama), or the powerful [Deepseek-Coder-v2](https://ollama.com/library/deepseek-coder:6.7b) (default for this module).
 
 Forked from the impressive [zsh version of this extension by Tom Doerr](https://github.com/tom-doerr/zsh_codex).
 
@@ -79,6 +79,8 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 ```powershell
 # to install or update to the latest version
 Install-Module -Name PoshCodex -Force
+
+Import-Module PoshCodex -Force
 
 # to check if it's installed properly:
 Get-Module -Name PoshCodex # should display the Write-Completion command
@@ -111,7 +113,7 @@ cd ./posh_codex/PoshCodex/
 
 # Install Invoke-Build and build the module
 Install-Module InvokeBuild -Force
-Invoke-Build -File build.ps1 -Configuration 'Release'
+Invoke-Build -File build.ps1
 
 # Now import the built module
 Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
@@ -122,7 +124,7 @@ Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 
 ## Configuration of the Ollama Model
 
-**Note:** The AI completion will run locally on your machine, and the below commands will download a large model file.
+**Note:** The AI completion will run locally on your machine, and the below commands will download the model file.
 
 ```powershell
 # install ollama
@@ -131,16 +133,12 @@ scoop install versions/innounp-unicode
 scoop install ollama
 
 # pull the base model
-ollama pull deepseek-coder-v2:16b # around 8 GB
+ollama pull rishi255/posh_codex_model
 
-# if you find the above to be too slow, you can use a smaller version of the base model
-# (note that results might not be as good as larger models)
-ollama pull deepseek-coder:6.7b # around 4 GB
-
-# NOTE: If you choose to use any model other than
-
-# create new model tailored for our needs using Modelfile.txt
-ollama create posh_codex_model -f .\Modelfile.txt
+# or, create a new model tailored for your needs using Modelfile.txt
+# (refer https://github.com/ollama/ollama/blob/main/docs/modelfile.md)
+ollama create my_model -f .\Modelfile.txt
+echo "`n$env:OLLAMA_MODEL='my_model'" >> $PROFILE
 ```
 
 ## Usage
@@ -158,34 +156,22 @@ See the GIF above for a demonstration.
 
 ## Changing the keybind
 
-The module exposes a function to change the keybind to whatever you want to use.
-Default keybind is `Ctrl+Alt+x`, and can be changed like this:
-
-```powershell
-Set-CompletionKeybind 'Shift+y'
-Set-CompletionKeybind 'Tab'
-
-# to set keybind as combination of two chords
-Set-CompletionKeybind 'Ctrl+K,Ctrl+E'
-```
-
-List of all supported keys that can be separated by + is given [here](https://docs.microsoft.com/en-us/dotnet/api/system.consolekey?view=net-6.0#fields).
+When you import the module for the first time, you can enter your own keybind. Just type `Enter-CompletionKeybind` in the terminal and record the keyboard shortcut you want to use.
 
 ## TODO checklist
 
 - [x] Test basic PS plugin working with hardcoded completions
-- [x] Test plugin by scraping the generated output from [my text-to-PowerShell OpenAI playground.](https://beta.openai.com/playground/p/4FqkeG4WQuIPfOUS6cvXQfQR?model=davinci), until a Codex API key is received.
-- [x] Publish package on NuGet for testing whether all is working fine
-- [x] Test NuGet package by installing and running
+- [x] Test plugin by comparing the generated output from [my text-to-PowerShell OpenAI playground](https://platform.openai.com/playground/chat?models=gpt-3.5-turbo-0125&preset=4FqkeG4WQuIPfOUS6cvXQfQR)
 - [x] Publish plugin for installation through PSGallery
 - [x] Add installation instructions to README.md
 - [x] Integrate with GitHub Actions to auto-publish new versions
 - [x] Make required modules auto-install when this module is installed
 - [x] Publish plugin for installation through Scoop
 - [x] Add a way to change the hotkey for completion - default is `Ctrl+Alt+x`
-- [ ] Add a way to change the hotkey for completion by reading key input, instead of user having to call function`
+- [x] Add a way to change the hotkey for completion by reading key input, instead of user having to call function`
+- [ ] Stream the output, instead of waiting for entire thing to be generated
+  - [ ] OR Show a progress/loading indicator when inference is running
 - [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
-- [ ] Test plugin robustness in PowerShell
 - [ ] Add GIF of working demo in terminal
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)

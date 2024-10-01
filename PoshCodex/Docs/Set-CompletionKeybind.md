@@ -14,7 +14,8 @@ This function is used to change the keybind that calls the Write-Completion func
 ## SYNTAX
 
 ```
-Set-CompletionKeybind [[-keybind] <Object>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Set-CompletionKeybind [[-old_keybind] <Object>] [[-new_keybind] <Object>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,9 +46,23 @@ PS C:\> Set-CompletionKeybind 'Ctrl+K,Ctrl+E'
 
 ## PARAMETERS
 
-### -keybind
+### -new_keybind
+{{ Fill new_keybind Description }}
 
-{{ Fill keybind Description }}
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -old_keybind
+{{ Fill old_keybind Description }}
 
 ```yaml
 Type: Object
