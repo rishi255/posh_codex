@@ -1,0 +1,60 @@
+name: posh_codex_docker_env
+
+services:
+  powershell:
+    image: mcr.microsoft.com/powershell:latest
+    container_name: powershell-container
+    networks:
+      - my-network
+    entrypoint:
+      [
+        "pwsh",
+        "-Command",
+        "Install-Module PSReadLine -Force",
+        "Install-Module PoshCodex -Force",
+        'pwsh -c "[console]::ReadKey()"',
+      ]
+    environment:
+      - IS_DOCKER_RUNNING=true
+      - OLLAMA_HOST=http://ollama:11434
+    # command: pwsh
+    stdin_open: true
+    tty: true
+
+  ollama:
+    image: ollama/ollama:latest # Replace with the correct Ollama Docker image
+    container_name: ollama-container
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ollama-data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ollama list || exit 1
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+    networks:
+      - my-network
+    ports:
+      - "11434:11434" # Expose Ollama service on a port if needed
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  ollama-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/.ollama
