@@ -55,7 +55,7 @@
 <br/>
 <div align="center">
   <img
-    src="https://raw.githubusercontent.com/rishi255/posh_codex/refs/heads/main/assets/PoshCodex_Demo.gif"
+    src="assets/PoshCodex_Demo.gif"
   />
   <div align="center">
     You just need to write a comment or variable name and the AI will write the
