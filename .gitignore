@@ -1,4 +1,6 @@
-shared_with_containers_dir
+shared_with_containers_dir/
+assets_archived/
+terminalizer_config/
 
 # Environments
 .env
