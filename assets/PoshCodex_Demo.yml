@@ -1,0 +1,1185 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: C:\Users\rishi\scoop\shims\pwsh.exe
+
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: C:\Users\rishi\Desktop\git\posh_codex
+
+  # Export additional ENV variables
+  env:
+    recording: true
+
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 112
+
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 35
+
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+
+  # Quality
+  # 1 - 100
+  quality: 100
+
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: solid
+    title: PoshCodex Demo - Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "FiraCode Nerd Font"
+
+  # The size of the font
+  fontSize: 12
+
+  # The height of lines
+  lineHeight: 1
+
+  # The spacing between letters
+  letterSpacing: 0
+
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+
+# Records, feel free to edit them
+records:
+  - delay: 4
+    content: "\e[m"
+  - delay: 70
+    content: "\e[?25l\e[3J\e[H\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\e[H\e[?25h"
+  - delay: 18
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 \e[38;2;205;66;119m\r\n# "
+  - delay: 4
+    content: "\e[m"
+  - delay: 371
+    content: "\e[93mI"
+  - delay: 4
+    content: "\e[m"
+  - delay: 46
+    content: "\e[93m\bIm"
+  - delay: 4
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[93m\e[2;3HImp\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[93m\e[2;3HImpo\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[93m\e[2;3HImpor\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[93m\e[2;3HImport\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 189
+    content: "\e[?25l\e[93m\e[2;3HImport-\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 64
+    content: "\e[?25l\e[93m\e[2;3HImport-M\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[93m\e[2;3HImport-Mo\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[93m\e[2;3HImport-Mod\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 34
+    content: "\e[?25l\e[93m\e[2;3HImport-Modu\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[93m\e[2;3HImport-Modul\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 17
+    content: "\e[?25l\e[93m\e[2;3HImport-Module\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 67
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mP\e[?25h"
+  - delay: 72
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPo\e[?25h"
+  - delay: 42
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPos\e[?25h"
+  - delay: 38
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPosh\e[?25h"
+  - delay: 87
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPoshC\e[?25h"
+  - delay: 82
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPoshCo\e[?25h"
+  - delay: 13
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPoshCod\e[?25h"
+  - delay: 27
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPoshCode\e[?25h"
+  - delay: 60
+    content: "\e[?25l\e[93m\e[2;3HImport-Module \e[mPoshCodex\e[?25h"
+  - delay: 210
+    content: "\r\n"
+  - delay: 172
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 \e[38;2;205;66;119m\r\n# "
+  - delay: 3
+    content: "\e[m"
+  - delay: 369
+    content: "\e[93mE"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[93m\bEn"
+  - delay: 4
+    content: "\e[m"
+  - delay: 24
+    content: "\e[?25l\e[93m\e[4;3HEnt\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[93m\e[4;3HEnte\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 21
+    content: "\e[?25l\e[93m\e[4;3HEnter\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 108
+    content: "\e[?25l\e[93m\e[4;3HEnter-\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 89
+    content: "\e[?25l\e[93m\e[4;3HEnter-C\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 64
+    content: "\e[?25l\e[93m\e[4;3HEnter-Co\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 15
+    content: "\e[?25l\e[93m\e[4;3HEnter-Com\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 52
+    content: "\e[?25l\e[93m\e[4;3HEnter-Comp\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 17
+    content: "\e[?25l\e[93m\e[4;3HEnter-Compl\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 9
+    content: "\e[?25l\e[93m\e[4;3HEnter-Comple\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 58
+    content: "\e[?25l\e[93m\e[4;3HEnter-Complet\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[93m\e[4;3HEnter-Completi\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 16
+    content: "\e[?25l\e[93m\e[4;3HEnter-Completio\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 9
+    content: "\e[?25l\e[93m\e[4;3HEnter-Completion\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 92
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionK\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 65
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKe\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 29
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKey\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 58
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKeyb\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 61
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKeybi\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 26
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKeybin\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[93m\e[4;3HEnter-CompletionKeybind\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 170
+    content: "\r\nPress any key or combination (Ctrl, Alt, Shift + other keys) to set the new keybind for PoshCodex. Press 'Escape' to exit.\r\n"
+  - delay: 227
+    content: "Previous keybind removed: Ctrl+Shift+O\r\nNew keybind set: Tab\r\n"
+  - delay: 63
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 \e[38;2;205;66;119m\r\n# "
+  - delay: 3
+    content: "\e[m"
+  - delay: 815
+    content: "\e[32m#"
+  - delay: 4
+    content: "\e[m"
+  - delay: 38
+    content: "\e[32m\b# "
+  - delay: 3
+    content: "\e[m"
+  - delay: 88
+    content: "\e[?25l\e[32m\e[10;3H# l\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[10;3H# li\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[10;3H# lis\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 46
+    content: "\e[?25l\e[32m\e[10;3H# list\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 48
+    content: "\e[?25l\e[32m\e[10;3H# list \e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 347
+    content: "\e[?25l\e[32m\e[10;3H# list a\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 7
+    content: "\e[?25l\e[32m\e[10;3H# list al\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 48
+    content: "\e[?25l\e[32m\e[10;3H# list all\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[10;3H# list all \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 39
+    content: "\e[?25l\e[32m\e[10;3H# list all c\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 21
+    content: "\e[?25l\e[32m\e[10;3H# list all cu\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[10;3H# list all cur\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 50
+    content: "\e[?25l\e[32m\e[10;3H# list all curr\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 49
+    content: "\e[?25l\e[32m\e[10;3H# list all curre\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 35
+    content: "\e[?25l\e[32m\e[10;3H# list all curren\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[32m\e[10;3H# list all current\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[10;3H# list all currentl\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 21
+    content: "\e[?25l\e[32m\e[10;3H# list all currently\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 39
+    content: "\e[?25l\e[32m\e[10;3H# list all currently \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[10;3H# list all currently r\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 25
+    content: "\e[?25l\e[32m\e[10;3H# list all currently ru\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[10;3H# list all currently run\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[32m\e[10;3H# list all currently runn\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[32m\e[10;3H# list all currently runni\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[10;3H# list all currently runnin\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 41
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running i\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running in\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running ins\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 37
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running inst\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running insta\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 54
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instan\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instanc\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 10
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instance\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 56
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 36
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances o\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of f\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of fi\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of fir\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of fire\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 99
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of firef\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 26
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of firefo\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of firefox\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 348
+    content: "\e[?25l\e[32m\e[10;3H# list all currently running instances of firefox \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 1311
+    content: "\e[?25l\r\n> \e[93mGet-Process \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.Name \e[90m-eq \e[36m'firefox' \e[m}\e[K\r\n>\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\r\n\e[K\e[12;3H\e[?25h"
+  - delay: 551
+    content: "\r\n"
+  - delay: 3
+    content: "\e[32m\e[1m\e[3m\r\n NPM(K)\e[m \e[32m\e[1m\e[3m   PM(M)\e[m \e[32m\e[1m\e[3m     WS(M)\e[m \e[32m\e[1m\e[3m    CPU(s)\e[23m      Id  SI ProcessName\r\n ------\e[m \e[32m\e[1m   -----\e[m \e[32m\e[1m     -----\e[m \e[32m\e[1m    ------\e[m \e[32m\e[1m     --\e[m \e[32m\e[1m --\e[m \e[32m\e[1m-----------\e[m\r\n     18    27.89      28.84       0.00   10764   1 firefox\r\n     37   129.06     149.95       0.78   20848   1 firefox\r\n     33   106.21     129.19       0.12   24172   1 firefox\r\n     17    20.59      15.97       0.00   24872   1 firefox\r\n     67   325.40     311.59       2.33   24988   1 firefox\r\n     40   147.86     168.41       0.45   31764   1 firefox\r\n     18    27.83      28.69       0.02   33176   1 firefox\r\n     56   204.96     221.27       0.77   33644   1 firefox\r\n     44   163.07     179.24       0.53   33712   1 firefox\r\n     68   224.62     216.27       0.95   34452   1 firefox\r\n    134   255.53     324.93      11.14   34860   1 firefox\r\n     15    21.14      17.04       0.00   36352   1 firefox\r\n     24    72.21      35.37       0.03   42152   1 firefox\r\n     30    73.63     100.72       0.33   42300   1 firefox\r\n     33    73.14      95.04       0.94   43232   1 firefox\r\n     18    27.90      28.82       0.02   43556   1 firefox\r\n    100   396.45     174.82       5.77   43668   1 firefox\r\n     29    81.59      92.93       0.12   45600   1 firefox\r\n     49   195.51     217.31       0.97   46304   1 firefox\r\n     50   192.48     213.56       0.50   46664   1 firefox\r\n     13    36.75      15.42       0.02   47208   1 firefox\r\n     39   118.52     142.88       0.53   48588   1 firefox\r\n"
+  - delay: 5
+    content: |+
+
+  - delay: 10
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 "
+  - delay: 3
+    content: "\e[m\r\n\e[38;2;205;66;119m#\e[1C"
+  - delay: 4
+    content: "\e[m"
+  - delay: 330
+    content: "\e[32m#"
+  - delay: 4
+    content: "\e[m"
+  - delay: 61
+    content: "\e[32m\b# "
+  - delay: 3
+    content: "\e[m"
+  - delay: 98
+    content: "\e[?25l\e[32m\e[35;3H# s\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 61
+    content: "\e[?25l\e[32m\e[35;3H# st\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 24
+    content: "\e[?25l\e[32m\e[35;3H# sto\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[35;3H# stop\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[32m\e[35;3H# stop \e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 37
+    content: "\e[?25l\e[32m\e[35;3H# stop a\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 12
+    content: "\e[?25l\e[32m\e[35;3H# stop al\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[35;3H# stop all\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 30
+    content: "\e[?25l\e[32m\e[35;3H# stop all \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 40
+    content: "\e[?25l\e[32m\e[35;3H# stop all c\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 62
+    content: "\e[?25l\e[32m\e[35;3H# stop all cu\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 36
+    content: "\e[?25l\e[32m\e[35;3H# stop all cur\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 56
+    content: "\e[?25l\e[32m\e[35;3H# stop all curr\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# stop all curre\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 60
+    content: "\e[?25l\e[32m\e[35;3H# stop all curren\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# stop all current\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 63
+    content: "\e[?25l\e[32m\e[35;3H# stop all currentl\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 139
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 60
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently r\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently ru\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently run\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently runn\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 35
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently runni\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently runnin\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 40
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 97
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running i\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running in\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running ins\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 55
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running inst\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running insta\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 81
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instan\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instanc\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instance\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 57
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances o\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of f\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of fi\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 37
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of fir\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of fire\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 70
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of firef\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of firefo\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of firefox\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 82
+    content: "\e[?25l\e[32m\e[35;3H# stop all currently running instances of firefox \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 873
+    content: "\e[?25l\r\n> \e[93mtaskkill \e[m/f /im firefox.exe\e[K\e[83C"
+  - delay: 2
+    content: "\r\n>\e[1C\e[?25h"
+  - delay: 587
+    content: "\r\n"
+  - delay: 34
+    content: "SUCCESS: The process \"firefox.exe\" with PID 34860 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 43668 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 24872 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 43232 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 24988 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 47208 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 45600 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 42300 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 34452 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 33712 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 42152 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 36352 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 24172 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 31764 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 46664 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 48588 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 20848 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 33644 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 46304 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 33176 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 43556 has been terminated.\r\nSUCCESS: The process \"firefox.exe\" with PID 10764 has been terminated.\r\n"
+  - delay: 24
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 "
+  - delay: 6
+    content: "\e[m\r\n\e[38;2;205;66;119m#\e[1C"
+  - delay: 3
+    content: "\e[m"
+  - delay: 250
+    content: "\e[32m# stop all currently running instances of firefox \e[?25l\e[m\r\n> \e[93mtaskkill \e[m/f /im firefox.exe\e[K\e[83C"
+  - delay: 6
+    content: "\r\n>\e[1C\e[?25h"
+  - delay: 159
+    content: "\e[?25l\e[32m\e[33;3H# list all currently running instances of firefox \e[m\r\n> \e[93mGet-Process \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.Name \e[90m-eq \e[36m'firefox' \e[m}\e[K\r\n>\e[K\e[1C\e[?25h"
+  - delay: 364
+    content: "\r\n"
+  - delay: 13
+    content: "\e[38;2;69;241;194m rishi on \e[38;2;12;160;216m ~/Desktop/git/posh_codex \e[38;2;20;165;174m main  1 "
+  - delay: 3
+    content: "\e[m\r\n\e[38;2;205;66;119m#\e[1C"
+  - delay: 5
+    content: "\e[m"
+  - delay: 1304
+    content: "\e[32m#"
+  - delay: 4
+    content: "\e[m"
+  - delay: 60
+    content: "\e[32m\b# "
+  - delay: 4
+    content: "\e[m"
+  - delay: 78
+    content: "\e[?25l\e[32m\e[35;3H# R\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 50
+    content: "\e[?25l\e[32m\e[35;3H# Re\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 42
+    content: "\e[?25l\e[32m\e[35;3H# Ren\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rena\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 30
+    content: "\e[?25l\e[32m\e[35;3H# Renam\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[35;3H# Rename\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 26
+    content: "\e[?25l\e[32m\e[35;3H# Rename \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[32m\e[35;3H# Rename t\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 17
+    content: "\e[?25l\e[32m\e[35;3H# Rename th\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rename the\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 20
+    content: "\e[?25l\e[32m\e[35;3H# Rename the \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 48
+    content: "\e[?25l\e[32m\e[35;3H# Rename the m\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 18
+    content: "\e[?25l\e[32m\e[35;3H# Rename the mo\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# Rename the mos\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 62
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 26
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 53
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most r\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most re\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 65
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most rec\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 21
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most rece\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 61
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recen\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recent\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 61
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recentl\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 12
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 156
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently m\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 59
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently mo\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 62
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently mod\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 58
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modf\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 110
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently     \e[35;30H\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 219
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently m\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently mo\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently mod\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modi\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modif\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 26
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modifi\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modifie\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 24
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 59
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified t\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 12
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified te\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 55
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified tex\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 22
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 40
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 34
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text f\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text fi\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text fil\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 36
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 57
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file i\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 50
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in \e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 262
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in c\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in cu\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in cur\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 46
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in curr\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 23
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in curre\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 37
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in curren\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 21
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 30
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current d\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 25
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current di\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current dir\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 46
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current dire\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 41
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current direc\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 44
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current direct\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 43
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directo\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 106
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current director\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 45
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 44
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory r\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 50
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory re\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 38
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory rec\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 32
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recu\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 14
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recur\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 52
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recurs\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursi\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 29
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursiv\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 17
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursive\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 35
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursivel\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 54
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 41
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 47
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively t\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 19
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 393
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to \e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 452
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to a\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 53
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to ad\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 41
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 31
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 174
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 66
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 126
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_r\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_re\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 33
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_ren\e[?25h"
+  - delay: 4
+    content: "\e[m"
+  - delay: 27
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_rena\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_renam\e[?25h"
+  - delay: 3
+    content: "\e[m"
+  - delay: 28
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_rename\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 51
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_renamed\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 114
+    content: "\e[?25l\e[32m\e[35;3H# Rename the most recently modified text file in current directory recursively to add \"_renamed\"\e[?25h"
+  - delay: 5
+    content: "\e[m"
+  - delay: 4
+    content: "\e[m"
+  - delay: 50
+    content: "\e[?25l\r\n> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Obj\e[m\r\n\e[93m\e[34;112Hject \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension}\e[K\e[36C"
+  - delay: 1000
+    content: "\r\n>\e[1C\e[?25h"
+  - delay: 585
+    content: "\e[?25l\e[34;77H\e[?25h"
+  - delay: 162
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension}\e[K\r\n>\e[K\e[34;78H\e[?25h"
+  - delay: 223
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} -\e[K\r\n>\e[K\e[34;79H\e[?25h"
+  - delay: 77
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-W\e[K\e[m\r\n>\e[K\e[34;80H\e[?25h"
+  - delay: 67
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-Wh\e[K\e[m\r\n>\e[K\e[34;81H\e[?25h"
+  - delay: 39
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-Wha\e[K\e[m\r\n>\e[K\e[34;82H\e[?25h"
+  - delay: 41
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-What\e[K\e[m\r\n>\e[K\e[34;83H\e[?25h"
+  - delay: 336
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-WhatI\e[K\e[m\r\n>\e[K\e[34;84H\e[?25h"
+  - delay: 96
+    content: "\e[?25l\e[33;1H> \e[93mGet-ChildItem \e[90m-Recurse \e[m| \e[93mWhere-Object \e[m{ \e[92m$_\e[m.PSIsContainer \e[90m-eq \e[92m$false \e[m} | \e[93mSort-Object \e[mLastWriteTime | \e[93mSelect-Object \e[90m-Last \e[97m1 \e[m| \e[93mRename-Item \e[90m-NewName \e[m{\e[92m$_\e[m.BaseName \e[90m+ \e[36m\"_renamed\" \e[90m+ \e[92m$_\e[m.Extension} \e[90m-WhatIf\e[K\e[m\r\n>\e[K\e[34;85H\e[?25h"
+  - delay: 184
+    content: "\e[?25l\e[35;3H\e[?25h"
+  - delay: 6
+    content: "\r\n"
+  - delay: 200
+    content: "What if: Performing the operation \"Rename File\" on target \"Item: C:\\Users\\rishi\\Desktop\\git\\posh_codex\\demo1.yml\r\n\e[34;112Hl Destination: C:\\Users\\rishi\\Desktop\\git\\posh_codex\\demo1_renamed.yml\".\r"
+  - delay: 2000
+    content: |+
+
+
+
+
+
+

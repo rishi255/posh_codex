@@ -47,7 +47,7 @@
   </a>
   <a href="https://github.com/rishi255/posh_codex">
     <img
-      src="https://img.shields.io/github/workflow/status/rishi255/posh_codex/Build%20and%20Publish%20Module?colorA=2c2837&style=for-the-badge"
+      src="https://img.shields.io/github/actions/workflow/status/rishi255/posh_codex/main.yml?branch=main&colorA=2c2837&style=for-the-badge"
       alt="GitHub Workflow build status"
     />
   </a>
@@ -55,7 +55,7 @@
 <br/>
 <div align="center">
   <img
-    src="https://raw.githubusercontent.com/tom-doerr/bins/main/zsh_codex/zc4.gif"
+    src="https://raw.githubusercontent.com/rishi255/posh_codex/refs/heads/main/assets/PoshCodex_Demo.gif"
   />
   <div align="center">
     You just need to write a comment or variable name and the AI will write the
@@ -171,6 +171,8 @@ When you import the module for the first time, you can enter your own keybind. J
 - [x] Add a way to change the hotkey for completion by reading key input, instead of user having to call function`
 - [ ] Stream the output, instead of waiting for entire thing to be generated
   - [ ] OR Show a progress/loading indicator when inference is running
+- [ ] Switch to chat API instead of generate - to provide context of previous messages?
+- [ ] Switch from environment variables based configuration to a config file (`poshcodex.ini`)
 - [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
 - [ ] Add GIF of working demo in terminal
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
