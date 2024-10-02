@@ -22,7 +22,7 @@ jobs:
           # All of these options are optional, so you can remove them if you are happy with the defaults
           concurrent_skipping: "never"
           skip_after_successful_duplicate: "false"
-          paths_ignore: '["**.md", ".gitignore", ".prettierrc", "**/Docs/**"]'
+          paths_ignore: '["**.md", ".gitignore", ".prettierrc", "**/Docs/**", "assets/**", "**.yml"]'
           do_not_skip: '["workflow_dispatch", "schedule"]'
 
   # 1st Job -- Building the module, skip job if should_skip is true
