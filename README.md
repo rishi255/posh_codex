@@ -55,8 +55,10 @@
 <br/>
 <div align="center">
   <img
-    src="assets/PoshCodex_Demo.gif"
-  />
+   src="assets/PoshCodex_Demo.gif"
+   style="width: 80%"
+   alt="PoshCodex Demo"
+   />
   <div align="center">
     You just need to write a comment or variable name and the AI will write the
     corresponding code.
@@ -74,7 +76,7 @@ Forked from the impressive [zsh version of this extension by Tom Doerr](https://
 
 ## How to Install
 
-### 1. Through PowerShellGallery (recommended, cross-platform)
+### 1. Using PowerShellGallery (recommended, cross-platform)
 
 ```powershell
 # to install or update to the latest version
@@ -83,13 +85,13 @@ Install-Module -Name PoshCodex -Force
 Import-Module PoshCodex -Force
 
 # to check if it's installed properly:
-Get-Module -Name PoshCodex # should display the Write-Completion command
+Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 2. Through Scoop (Windows only)
+### 2. Using Scoop (Windows only)
 
 Scoop is an easy-to-use command-line installer for Windows apps. You can get Scoop from [here](https://scoop.sh/).
 
@@ -97,7 +99,9 @@ Scoop is an easy-to-use command-line installer for Windows apps. You can get Sco
 scoop bucket add poshcodex_bucket https://github.com/rishi255/posh_codex
 scoop install PoshCodex # not case sensitive
 
-# to update the module later:
+Import-Module PoshCodex -Force
+
+# to update the module later, you can use:
 scoop update PoshCodex
 
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
@@ -119,7 +123,8 @@ Invoke-Build -File build.ps1
 Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 
 # Now the module can be used in the current powershell session.
-# See above step for auto-import on every powershell session.
+# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
+echo "`nImport-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1" >> $PROFILE
 ```
 
 ## Configuration of the Ollama Model
@@ -133,7 +138,7 @@ scoop install versions/innounp-unicode
 scoop install ollama
 
 # pull the base model
-ollama pull rishi255/posh_codex_model
+ollama pull rishi255/posh_codex_model:latest
 
 # or, create a new model tailored for your needs using Modelfile.txt
 # (refer https://github.com/ollama/ollama/blob/main/docs/modelfile.md)
@@ -148,17 +153,29 @@ Just type a comment or partial code snippet, and hit the keybind!
 See the GIF above for a demonstration.
 
 ```powershell
-# type some comment that describes what you want to do, eg:
-"# install the 'scoop' module" # with/without any of the quotes
-
-# Just hit Ctrl+Alt+x (or your own keybind if changed) and the AI will write the corresponding code for you.
+# print hello world to the console
 ```
+
+`Hit Ctrl+Shift+O after typing the above comment`
 
 ## Changing the keybind
 
-When you import the module for the first time, you can enter your own keybind. Just type `Enter-CompletionKeybind` in the terminal and record the keyboard shortcut you want to use.
+**The default keybind is `Ctrl+Shift+O`.**
 
-## TODO checklist
+After you import the module, you can enter your own keybind.  
+Just type `Enter-CompletionKeybind` in the terminal and record the keyboard shortcut you want to use.
+
+## Configuration
+
+The following environment variables are available for configuration:
+
+| Environment Variable | Default Value               | Description                                     |
+| -------------------- | --------------------------- | ----------------------------------------------- |
+| `OLLAMA_MODEL`       | `rishi255/posh_codex_model` | The Ollama model name to use for AI completion. |
+| `OLLAMA_HOST`        | `http://localhost:11434`    | The base URL of your Ollama API.                |
+| `AUTOCOMPLETE_KEY`   | `Ctrl+Shift+O`              | The keybind to use for AI completion.           |
+
+## The Journey So Far (there's still a lot TODO)
 
 - [x] Test basic PS plugin working with hardcoded completions
 - [x] Test plugin by comparing the generated output from [my text-to-PowerShell OpenAI playground](https://platform.openai.com/playground/chat?models=gpt-3.5-turbo-0125&preset=4FqkeG4WQuIPfOUS6cvXQfQR)
@@ -167,14 +184,19 @@ When you import the module for the first time, you can enter your own keybind. J
 - [x] Integrate with GitHub Actions to auto-publish new versions
 - [x] Make required modules auto-install when this module is installed
 - [x] Publish plugin for installation through Scoop
-- [x] Add a way to change the hotkey for completion - default is `Ctrl+Alt+x`
-- [x] Add a way to change the hotkey for completion by reading key input, instead of user having to call function`
+- [x] Add a way to change the hotkey for completion by reading key input: `Enter-CompletionKeybind`
+- [ ] Simplify installation - 3 remote-executable setup scripts - one each for install thru PSGallery, Scoop and self build.
+  - [ ] For PSGallery and Scoop, make only one common script - add it to scoop manifest's pre-install section
 - [ ] Stream the output, instead of waiting for entire thing to be generated
   - [ ] OR Show a progress/loading indicator when inference is running
+- [ ] Need support for inline completion, currently we are inserting the response on a new line
+  - [ ] Need to fine tune / prompt engineer the model better for this as well - currently it isn't very good at it
 - [ ] Switch to chat API instead of generate - to provide context of previous messages?
 - [ ] Switch from environment variables based configuration to a config file (`poshcodex.ini`)
-- [ ] Add proper documentation in `PoshCodex/Docs/about_PoshCodex.md` and `PoshCodex/Docs/Write-Completion.md`
-- [ ] Add GIF of working demo in terminal
+  - [ ] Ensure that getting and setting config values are only done through the config file
+  - [ ] After this change, `Initialize-Module-On-Import` needs to call `Set-CompletionKeybind` internally after reading latest value from config.
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
+  - For changing text colour of prediction, look at `Set-PSReadLineOption` or in that direction
+- [ ] Add proper documentation for all the functions and `Docs/about_PoshCodex.md`
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
-- [ ] Make a website playground that lets users try this out live using my API key
+- [ ] Make a website playground that lets users try this out live? Need to check feasibility.
