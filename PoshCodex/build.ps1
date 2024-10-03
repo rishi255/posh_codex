@@ -225,10 +225,10 @@ task Build {
 	}
 	else {
 		# Write-Verbose -Message 'Removing old Help files, to generate new files.'
-		# Remove-Item -Path ".\Docs\*.*" -Exclude "about_*"
+		# Remove-Item -Path '.\Docs\*.*' -Exclude 'about_*'
 		if (Get-Module -Name $($ModuleName)) {
 			# Write-Verbose -Message "Module: $($ModuleName) is imported into session, updating Help Files"
-			# New-MarkdownHelp -Module $ModuleName -OutputFolder ".\Docs"
+			# New-MarkdownHelp -Module $ModuleName -OutputFolder '.\Docs'
 			Update-MarkdownHelp '.\Docs'
 			New-ExternalHelp '.\Docs' -OutputPath ".\Output\$($ModuleName)\$($ModuleVersion)\en-US\"
 		}

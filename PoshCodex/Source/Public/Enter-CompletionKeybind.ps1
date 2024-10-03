@@ -18,9 +18,5 @@ function Enter-CompletionKeybind {
 	# get old keybind, call set keybind for new 
 	$old_autocomplete_keybind = [Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User')
 	Set-CompletionKeybind $old_autocomplete_keybind $new_autocomplete_keybind
-	Write-Host "New keybind set: $new_autocomplete_keybind"
-
-	# Update env var with new keybind
-	[Environment]::SetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', $new_autocomplete_keybind, [System.EnvironmentVariableTarget]::User)
-	# Write-Host "Value of newly set env var: $([Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User'))"
+	Write-Host "New keybind set: $([Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User'))"
 }
