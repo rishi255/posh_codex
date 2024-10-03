@@ -18,4 +18,7 @@ function Set-CompletionKeybind {
 		-BriefDescription Write-Completion `
 		-LongDescription 'Autocomplete the command' `
 		-ScriptBlock { Write-Completion }
+	
+	# Update env var with new keybind
+	[Environment]::SetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', $new_keybind, [System.EnvironmentVariableTarget]::User)
 }

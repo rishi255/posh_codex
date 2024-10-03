@@ -4,17 +4,17 @@ function Invoke-Ollama-Api {
 		$BUFFER
 	)
 
-	# [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory($line)
-	# [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+	$ollama_model = [Environment]::GetEnvironmentVariable('OLLAMA_MODEL', 'User')
+	$ollama_host = [Environment]::GetEnvironmentVariable('OLLAMA_HOST', 'User')
 
 	$data = @{
-		model  = "$env:OLLAMA_MODEL"
+		model  = "$ollama_model"
 		prompt = $BUFFER
 		stream = $false
 	}
 
 	$json_output = Invoke-RestMethod -Method POST `
-		-Uri "$env:OLLAMA_HOST/api/generate" `
+		-Uri "$ollama_host/api/generate" `
 		-Body ($data | ConvertTo-Json) `
 		-ContentType 'application/json; charset=utf-8';
 
