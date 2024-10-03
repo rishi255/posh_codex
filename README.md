@@ -72,7 +72,7 @@ This is a PowerShell plugin that enables you to plug and play any AI code comple
 
 It is completely free, as it can be used with any open-source model from Ollama, like [CodeLlama](https://ollama.com/library/codellama), or the powerful [Deepseek-Coder-v2](https://ollama.com/library/deepseek-coder:6.7b) (default for this module).
 
-Forked from the impressive [zsh version of this extension by Tom Doerr](https://github.com/tom-doerr/zsh_codex).
+Inspired by the impressive [zsh version of this extension by Tom Doerr](https://github.com/tom-doerr/zsh_codex).
 
 ## How to Install
 
