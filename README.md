@@ -198,5 +198,6 @@ The following environment variables are available for configuration:
 - [ ] Make completed text a lighter colour to show that it is only a potential solution
   - For changing text colour of prediction, look at `Set-PSReadLineOption` or in that direction
 - [ ] Add proper documentation for all the functions and `Docs/about_PoshCodex.md`
+- [ ] Support for install using Chocolatey
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
 - [ ] Make a website playground that lets users try this out live? Need to check feasibility.
