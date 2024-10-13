@@ -5,7 +5,7 @@
 
 $current_keybind = [Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User')
 
-$default_keybind = if (-not [String]::IsNullOrWhiteSpace($current_keybind)) {
+$default_keybind = if ([String]::IsNullOrWhiteSpace($current_keybind)) {
 	## Use default keybind, if none is set
 	'Ctrl+Shift+O'
 } else {
