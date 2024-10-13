@@ -1,4 +1,4 @@
-function Invoke-Ollama-Api {
+function Invoke-OllamaApi {
 	[CmdletBinding()]
 	param (
 		$BUFFER
@@ -13,10 +13,11 @@ function Invoke-Ollama-Api {
 		stream = $false
 	}
 
-	$json_output = Invoke-RestMethod -Method POST `
-		-Uri "$ollama_host/api/generate" `
-		-Body ($data | ConvertTo-Json) `
-		-ContentType 'application/json; charset=utf-8';
-
-	return $json_output
+	$splatRestMethod = @{
+		Method      = 'POST'
+		Uri         = "$ollama_host/api/generate"
+		Body        = ConvertTo-Json -InputObject $data
+		ContentType = 'application/json; charset=utf-8'
+	}
+	Invoke-RestMethod @splatRestMethod
 }
