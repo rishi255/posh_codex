@@ -4,7 +4,11 @@
 [Environment]::SetEnvironmentVariable('OLLAMA_MODEL', 'rishi255/posh_codex_model', [System.EnvironmentVariableTarget]::User)
 
 
-## Set default keybind:
-
-$default_keybind = 'Ctrl+Shift+O'
-Set-CompletionKeybind $null $default_keybind;
+if (-not [Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User')) {
+	## Use default keybind, if none is set
+	$default_keybind = 'Ctrl+Shift+O'
+} else {
+	## Use existing keybind
+	$default_keybind = [Environment]::GetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', 'User')
+}
+Set-CompletionKeybind $null $default_keybind
