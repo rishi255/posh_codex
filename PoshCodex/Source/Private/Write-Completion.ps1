@@ -10,11 +10,11 @@ function Write-Completion {
 
 	# read text from current buffer
 	[Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$BUFFER, [ref]$cursor)
-	
+
 	# If the buffer text itself contains double quotes, then we need to escape them.
 	$BUFFER = $BUFFER.Replace('"', '""')
 
-	$json_output = Invoke-Ollama-Api $BUFFER
+	$json_output = Invoke-OllamaApi $BUFFER
 
 	# check if json_output is not equal to null
 	if ($null -ne $json_output) {
@@ -25,6 +25,6 @@ function Write-Completion {
 		[Microsoft.PowerShell.PSConsoleReadLine]::Insert($completion)
 	}
 	else {
-		Write-Output 'Response returned by API is null! It could be an internal error or the model is not installed properly hrough Ollama. Please fix and try again.' -ForegroundColor Red
+		Write-Host 'Response returned by API is null! It could be an internal error or the model is not installed properly through Ollama. Please fix and try again.' -ForegroundColor Red
 	}
 }

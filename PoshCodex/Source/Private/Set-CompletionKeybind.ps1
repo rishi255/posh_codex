@@ -13,12 +13,15 @@ function Set-CompletionKeybind {
 		Remove-PSReadLineKeyHandler -Chord $old_keybind
 		Write-Host "Previous keybind removed: $old_keybind"
 	}
-	
-	Set-PSReadLineKeyHandler -Chord $new_keybind `
-		-BriefDescription Write-Completion `
-		-LongDescription 'Autocomplete the command' `
-		-ScriptBlock { Write-Completion }
-	
+
+	$splatKeyHandler = @{
+		Chord            = $new_keybind
+		BriefDescription = 'Write-Completion'
+		Description      = 'Autocomplete the command'
+		ScriptBlock      = { Write-Completion }
+	}
+	Set-PSReadLineKeyHandler @splatKeyHandler
+
 	# Update env var with new keybind
-	[Environment]::SetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', $new_keybind, [System.EnvironmentVariableTarget]::User)
+	[Environment]::SetEnvironmentVariable('AUTOCOMPLETE_KEYBIND', $new_keybind, [EnvironmentVariableTarget]::User)
 }
