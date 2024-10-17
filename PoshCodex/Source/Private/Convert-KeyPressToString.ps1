@@ -30,8 +30,8 @@ function Convert-KeyPressToString {
 	# If the Escape key is pressed, exit the loop
 	if ($key.Key -eq 'Escape') {
 		Write-Host 'Aborted by user, exiting...'
-		return $null
+		return
 	}
 
-	return $keybind
+	$keybind
 }
