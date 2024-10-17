@@ -33,6 +33,8 @@ jobs:
     steps:
       # Checkout the main branch
       - uses: actions/checkout@main
+        with:
+          ssh-key: ${{secrets.MY_GITHUB_ACTIONS_DEPLOY_KEY}}
 
         # Setting up required powershell modules
       - name: 🔧 Set required PowerShell modules
@@ -154,6 +156,8 @@ jobs:
     steps:
       # Check out the main branch
       - uses: actions/checkout@main
+        with:
+          ssh-key: ${{secrets.MY_GITHUB_ACTIONS_DEPLOY_KEY}}
 
         # Downloads the powershell module build artifact made in the build step
       - name: 📩 Download build artifact
