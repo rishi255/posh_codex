@@ -24,5 +24,5 @@ if (Get-Command -Name 'ollama' -CommandType 'Application' -ErrorAction Ignore) {
 	}
 } else {
 	Write-Warning 'Ollama is not installed or not in the user or system PATH.'
-	Write-Warning 'Please follow the instructions at "https://github.com/rishi255/posh_codexnstall" and re-import the module.'
+	Write-Warning 'Please follow the instructions at "https://github.com/rishi255/posh_codex#configuration-of-the-ollama-model" and re-import the module.'
 }
