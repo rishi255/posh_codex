@@ -14,3 +14,15 @@ else {
 	$current_keybind
 }
 Set-CompletionKeybind $null $default_keybind
+
+## Check if Ollama is installed in the user or system PATH
+if (Get-Command -Name 'ollama' -CommandType 'Application' -ErrorAction Ignore) {
+	## Check if Ollama is running
+	if (-not (Get-Process -Name 'ollama' -ErrorAction Ignore)) {
+		## Start Ollama if it's not running
+		Start-Process -FilePath 'ollama' -ArgumentList 'serve' -WindowStyle Hidden
+	}
+} else {
+	Write-Warning 'Ollama is not installed or not in the user or system PATH.'
+	Write-Warning 'Please follow the instructions at "https://github.com/rishi255/posh_codexnstall" and re-import the module.'
+}
