@@ -212,7 +212,7 @@ task Build {
 	}
 
 	if (!(Get-ChildItem -Path '.\Docs')) {
-		# Write-Verbose -Message 'Docs folder is empty, generating new fiiles'
+		# Write-Verbose -Message 'Docs folder is empty, generating new files'
 		if (Get-Module -Name $($ModuleName)) {
 			# Write-Verbose -Message "Module: $($ModuleName) is imported into session, generating Help Files"
 			New-MarkdownHelp -Module $ModuleName -OutputFolder '.\Docs'
