@@ -76,7 +76,8 @@ Inspired by the impressive [zsh version of this extension by Tom Doerr](https://
 
 ## How to Install
 
-### 1. Using PowerShellGallery (recommended, cross-platform)
+<details open>
+<summary><h3> 1. Using PowerShellGallery (recommended, cross-platform) </h3></summary>
 
 ```powershell
 # to install or update to the latest version
@@ -91,7 +92,10 @@ Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 2. Using Scoop (Windows only)
+</details>
+
+<details>
+<summary><h3> 2. Using Scoop (Windows only) </h3></summary>
 
 Scoop is an easy-to-use command-line installer for Windows apps. You can get Scoop from [here](https://scoop.sh/).
 
@@ -108,7 +112,10 @@ scoop update PoshCodex
 echo "`nImport-Module PoshCodex" >> $PROFILE
 ```
 
-### 3. By building the module yourself
+</details>
+
+<details>
+<summary><h3> 3. By building the module yourself </h3></summary>
 
 ```powershell
 # Clone the repository
@@ -126,6 +133,8 @@ Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
 # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
 echo "`nImport-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1" >> $PROFILE
 ```
+
+</details>
 
 ## Configuration of the Ollama Model
 
