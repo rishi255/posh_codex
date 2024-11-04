@@ -77,63 +77,60 @@ Inspired by the impressive [zsh version of this extension by Tom Doerr](https://
 ## How to Install
 
 <details open>
-<summary><h3> 1. Using PowerShellGallery (recommended, cross-platform) </h3></summary>
+  <summary><h3> 1. Using PowerShellGallery (recommended, cross-platform) </h3></summary>
 
-```powershell
-# to install or update to the latest version
-Install-Module -Name PoshCodex -Force
-
-Import-Module PoshCodex -Force
-
-# to check if it's installed properly:
-Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
-
-# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-echo "`nImport-Module PoshCodex" >> $PROFILE
-```
-
+  ```powershell
+  # to install or update to the latest version
+  Install-Module -Name PoshCodex -Force
+  
+  Import-Module PoshCodex -Force
+  
+  # to check if it's installed properly:
+  Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
+  
+  # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
+  echo "`nImport-Module PoshCodex" >> $PROFILE
+  ```
 </details>
 
 <details>
-<summary><h3> 2. Using Scoop (Windows only) </h3></summary>
-
-Scoop is an easy-to-use command-line installer for Windows apps. You can get Scoop from [here](https://scoop.sh/).
-
-```powershell
-scoop bucket add poshcodex_bucket https://github.com/rishi255/posh_codex
-scoop install PoshCodex # not case sensitive
-
-Import-Module PoshCodex -Force
-
-# to update the module later, you can use:
-scoop update PoshCodex
-
-# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-echo "`nImport-Module PoshCodex" >> $PROFILE
-```
-
+  <summary><h3> 2. Using Scoop (Windows only) </h3></summary>
+  
+  Scoop is an easy-to-use command-line installer for Windows apps. You can get Scoop from [here](https://scoop.sh/).
+  
+  ```powershell
+  scoop bucket add poshcodex_bucket https://github.com/rishi255/posh_codex
+  scoop install PoshCodex # not case sensitive
+  
+  Import-Module PoshCodex -Force
+  
+  # to update the module later, you can use:
+  scoop update PoshCodex
+  
+  # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
+  echo "`nImport-Module PoshCodex" >> $PROFILE
+  ```
 </details>
 
 <details>
-<summary><h3> 3. By building the module yourself </h3></summary>
-
-```powershell
-# Clone the repository
-git clone https://github.com/rishi255/posh_codex
-cd ./posh_codex/PoshCodex/
-
-# Install Invoke-Build and build the module
-Install-Module InvokeBuild -Force
-Invoke-Build -File build.ps1
-
-# Now import the built module
-Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
-
-# Now the module can be used in the current powershell session.
-# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-echo "`nImport-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1" >> $PROFILE
-```
-
+  <summary><h3> 3. By building the module yourself </h3></summary>
+  
+  ```powershell
+  # Clone the repository
+  git clone https://github.com/rishi255/posh_codex
+  cd ./posh_codex/PoshCodex/
+  
+  # Install Invoke-Build and build the module
+  Install-Module InvokeBuild -Force
+  Invoke-Build -File build.ps1
+  
+  # Now import the built module
+  Import-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1
+  
+  # Now the module can be used in the current powershell session.
+  # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
+  echo "`nImport-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1" >> $PROFILE
+  ```
 </details>
 
 ## Configuration of the Ollama Model
@@ -141,7 +138,7 @@ echo "`nImport-Module ./Output/PoshCodex/<version_number>/PoshCodex.psd1" >> $PR
 **Note:** The AI completion will run locally on your machine, and the below commands will download the model file.
 
 ```powershell
-# install ollama
+# install ollama (visit https://ollama.com/download or install using scoop with the below commands):
 scoop bucket add versions
 scoop install versions/innounp-unicode
 scoop install ollama
