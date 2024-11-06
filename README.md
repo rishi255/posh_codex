@@ -79,18 +79,19 @@ Inspired by the impressive [zsh version of this extension by Tom Doerr](https://
 <details open>
   <summary><h3> 1. Using PowerShellGallery (recommended, cross-platform) </h3></summary>
 
-  ```powershell
-  # to install or update to the latest version
-  Install-Module -Name PoshCodex -Force
-  
-  Import-Module PoshCodex -Force
-  
-  # to check if it's installed properly:
-  Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
-  
-  # Auto-import the module on every powershell session, so you can directly use the keybind for completion:
-  echo "`nImport-Module PoshCodex" >> $PROFILE
-  ```
+```powershell
+# to install or update to the latest version
+Install-Module -Name PoshCodex -Force
+
+Import-Module PoshCodex -Force
+
+# to check if it's installed properly:
+Get-Module -Name PoshCodex # should display the Enter-CompletionKeybind command
+
+# Auto-import the module on every powershell session, so you can directly use the keybind for completion:
+echo "`nImport-Module PoshCodex" >> $PROFILE
+```
+
 </details>
 
 <details>
@@ -191,18 +192,19 @@ The following environment variables are available for configuration:
 - [x] Make required modules auto-install when this module is installed
 - [x] Publish plugin for installation through Scoop
 - [x] Add a way to change the hotkey for completion by reading key input: `Enter-CompletionKeybind`
-- [ ] Simplify installation - 3 remote-executable setup scripts - one each for install thru PSGallery, Scoop and self build.
-  - [ ] For PSGallery and Scoop, make only one common script - add it to scoop manifest's pre-install section
 - [ ] Stream the output, instead of waiting for entire thing to be generated
-  - [ ] OR Show a progress/loading indicator when inference is running
-- [ ] Need support for inline completion, currently we are inserting the response on a new line
+  - [ ] AND/OR Show a progress/loading indicator when inference is running
+- [ ] Extra layer of validation - validate the syntax of the response PowerShell code
+- [ ] Need support for inline completion (similar to Copilot on VSCode) - currently we are inserting the response on a new line
   - [ ] Need to fine tune / prompt engineer the model better for this as well - currently it isn't very good at it
-- [ ] Switch to chat API instead of generate - to provide context of previous messages?
+- [ ] Make completed text a lighter colour to show that it is only a potential solution
+  - [ ] For changing text colour of prediction, look at `Set-PSReadLineOption` or in that direction
+- [ ] Switch to chat API instead of generate
+  - [ ] Provide context of previous messages
+  - [ ] Provide context of all commands in current terminal session? Possible using PSReadLine history
 - [ ] Switch from environment variables based configuration to a config file (`poshcodex.ini`)
   - [ ] Ensure that getting and setting config values are only done through the config file
   - [ ] After this change, `Initialize-Module-On-Import` needs to call `Set-CompletionKeybind` internally after reading latest value from config.
-- [ ] Make completed text a lighter colour to show that it is only a potential solution
-  - For changing text colour of prediction, look at `Set-PSReadLineOption` or in that direction
 - [ ] Add proper documentation for all the functions and `Docs/about_PoshCodex.md`
 - [ ] Support for install using Chocolatey
 - [ ] Cycle through suggestions using some modifiable keybind (e.g. `Alt+C`)
