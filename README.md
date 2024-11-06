@@ -176,11 +176,11 @@ Just type `Enter-CompletionKeybind` in the terminal and record the keyboard shor
 
 The following environment variables are available for configuration:
 
-| Environment Variable | Default Value               | Description                                     |
-| -------------------- | --------------------------- | ----------------------------------------------- |
-| `OLLAMA_MODEL`       | `rishi255/posh_codex_model` | The Ollama model name to use for AI completion. |
-| `OLLAMA_HOST`        | `http://localhost:11434`    | The base URL of your Ollama API.                |
-| `AUTOCOMPLETE_KEY`   | `Ctrl+Shift+O`              | The keybind to use for AI completion.           |
+| Environment Variable     | Default Value               | Description                                     |
+| ------------------------ | --------------------------- | ----------------------------------------------- |
+| `OLLAMA_MODEL`           | `rishi255/posh_codex_model` | The Ollama model name to use for AI completion. |
+| `OLLAMA_HOST`            | `http://localhost:11434`    | The base URL of your Ollama API.                |
+| `AUTOCOMPLETE_KEYBIND`   | `Ctrl+Shift+O`              | The keybind to use for AI completion.           |
 
 ## The Journey So Far (there's still a lot TODO)
 
